@@ -1,0 +1,50 @@
+[gd_scene load_steps=3 format=3 uid="uid://o6nf18mvcvvj"]
+
+[ext_resource type="Texture2D" uid="uid://di8swxkfyblxa" path="res://icon.svg" id="1_gjvp6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5ihmn"]
+bg_color = Color(0.08627451, 0.105882354, 0.13333334, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.12941177, 0.14901961, 0.1764706, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[node name="NewsCard" type="PanelContainer"]
+custom_minimum_size = Vector2(0, 300)
+size_flags_horizontal = 0
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_5ihmn")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("1_gjvp6")
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="Description" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "Something new has happened."
+
+[node name="LinkButton" type="LinkButton" parent="VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Read More →"
+underline = 2

@@ -1,0 +1,116 @@
+[gd_scene load_steps=7 format=3 uid="uid://dbc81lof6ohpj"]
+
+[ext_resource type="Shader" uid="uid://bhk4goh156by" path="res://assets/blur_vs.tres" id="1_00alm"]
+[ext_resource type="Script" uid="uid://crd2ds31fc2e2" path="res://scenes/side_bar.gd" id="1_nc4e0"]
+[ext_resource type="Texture2D" uid="uid://dc52kcqj044jx" path="res://assets/icons/cross.svg" id="3_toxed"]
+[ext_resource type="Texture2D" uid="uid://dweqshqb4w348" path="res://assets/icons/left_arrow.svg" id="4_vy4js"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_efxa6"]
+shader = ExtResource("1_00alm")
+shader_parameter/border_highlight_value = 0.290000013775
+shader_parameter/blur_amount = 4.00000019
+shader_parameter/border_offset = -0.26
+shader_parameter/border_width = 0.400000019
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4c57u"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0.050980393, 0.06666667, 0.09019608, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.12941177, 0.14901961, 0.1764706, 1)
+corner_radius_top_left = 12
+corner_radius_bottom_left = 12
+
+[node name="SideBar3" type="Control" unique_id=8363792]
+layout_mode = 3
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 261.0
+grow_horizontal = 0
+grow_vertical = 2
+script = ExtResource("1_nc4e0")
+tween_speed = 4.0
+slide_in_transition = 7
+slide_out_transition = 7
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1822813695]
+material = SubResource("ShaderMaterial_efxa6")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_4c57u")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer" unique_id=304956630]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer" unique_id=1013422715]
+layout_mode = 2
+text = "Downloads"
+
+[node name="HSeparator" type="HSeparator" parent="PanelContainer/VBoxContainer" unique_id=478206790]
+layout_mode = 2
+
+[node name="HFlowContainer" type="HFlowContainer" parent="PanelContainer/VBoxContainer" unique_id=322059988]
+layout_mode = 2
+
+[node name="PauseAll" type="Button" parent="PanelContainer/VBoxContainer/HFlowContainer" unique_id=178108949]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "Pause All"
+
+[node name="CancelAll" type="Button" parent="PanelContainer/VBoxContainer/HFlowContainer" unique_id=852587586]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(125, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Cancel All"
+icon = ExtResource("3_toxed")
+expand_icon = true
+
+[node name="DownloadContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer" unique_id=1538223087]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SideBarButton" type="Button" parent="." unique_id=621870578]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -25.0
+offset_right = 2.0
+offset_bottom = 25.0
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_type_variation = &"SideBarButton"
+toggle_mode = true
+icon = ExtResource("4_vy4js")
+icon_alignment = 1
+
+[node name="KillBlenderDialog" type="ConfirmationDialog" parent="." unique_id=954904300]
+unique_name_in_owner = true
+oversampling_override = 1.0
+ok_button_text = "Yes"
+dialog_autowrap = true
+cancel_button_text = "No"
+
+[connection signal="pressed" from="PanelContainer/VBoxContainer/HFlowContainer/CancelAll" to="." method="_on_cancel_all_pressed"]
+[connection signal="child_exiting_tree" from="PanelContainer/VBoxContainer/DownloadContainer" to="." method="_on_download_container_child_exiting_tree"]
+[connection signal="toggled" from="SideBarButton" to="." method="_on_side_bar_button_toggled"]

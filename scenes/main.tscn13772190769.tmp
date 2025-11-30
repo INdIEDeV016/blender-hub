@@ -1,0 +1,131 @@
+[gd_scene load_steps=15 format=3 uid="uid://bgcxwniiv25x7"]
+
+[ext_resource type="Theme" uid="uid://eo7v7pngpuf1" path="res://assets/themes/default_dark.theme" id="1_272bh"]
+[ext_resource type="Script" uid="uid://bm1mlcl837ta" path="res://scenes/main.gd" id="1_ig7tw"]
+[ext_resource type="Texture2D" uid="uid://dcku5dxd2kl87" path="res://assets/Dark Mode Design.png" id="4_1bvp3"]
+[ext_resource type="Texture2D" uid="uid://bnn1ko61cmt7i" path="res://assets/icons/blender_icon_128x128.png" id="4_lquwl"]
+[ext_resource type="Texture2D" uid="uid://5hskd7uboj5d" path="res://assets/icons/settings.svg" id="5_7mycd"]
+[ext_resource type="PackedScene" uid="uid://cpq6qkufeji3o" path="res://scenes/blender_versions/blender_versions.tscn" id="5_lquwl"]
+[ext_resource type="PackedScene" uid="uid://q1ny5epx0qdm" path="res://scenes/dashboard/dashboard.tscn" id="7_kek77"]
+[ext_resource type="PackedScene" uid="uid://dbc81lof6ohpj" path="res://autoloads/side_bar.tscn" id="8_4c57u"]
+[ext_resource type="PackedScene" uid="uid://dhpmb0y01wbj6" path="res://scenes/settings/settings_window.tscn" id="8_5vw27"]
+[ext_resource type="Texture2D" uid="uid://dydfcjlabju2" path="res://assets/icons/blender.svg" id="8_ya4ey"]
+[ext_resource type="PackedScene" uid="uid://lmxefmhu0o4" path="res://scenes/gui_elements/notification_toast.tscn" id="10_4c57u"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h2yge"]
+content_margin_left = 10.0
+content_margin_top = 20.0
+content_margin_bottom = 20.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_h2yge"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7mycd"]
+
+[node name="Main" type="Control" unique_id=1176935326]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_272bh")
+script = ExtResource("1_ig7tw")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1628914159]
+layout_mode = 0
+offset_left = 1943.0
+offset_top = -1.0
+offset_right = 3589.602
+offset_bottom = 1059.0
+texture = ExtResource("4_1bvp3")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="HSplitContainer" type="HSplitContainer" parent="." unique_id=212397156]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="NavBar" type="PanelContainer" parent="HSplitContainer" unique_id=1600009375]
+layout_mode = 2
+theme_type_variation = &"NavBar"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HSplitContainer/NavBar" unique_id=1210028400]
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="Spacer" type="Control" parent="HSplitContainer/NavBar/VBoxContainer" unique_id=1750760749]
+layout_mode = 2
+
+[node name="App" type="HBoxContainer" parent="HSplitContainer/NavBar/VBoxContainer" unique_id=1655979886]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="Icon" type="TextureRect" parent="HSplitContainer/NavBar/VBoxContainer/App" unique_id=1982133248]
+layout_mode = 2
+texture = ExtResource("4_lquwl")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Name" type="Label" parent="HSplitContainer/NavBar/VBoxContainer/App" unique_id=1142066752]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("StyleBoxEmpty_h2yge")
+text = "Blender Hub"
+label_settings = SubResource("LabelSettings_h2yge")
+vertical_alignment = 1
+
+[node name="Tabs" type="VBoxContainer" parent="HSplitContainer/NavBar/VBoxContainer" unique_id=1126311914]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="Settings" type="Button" parent="HSplitContainer/NavBar/VBoxContainer" unique_id=249266278]
+layout_mode = 2
+size_flags_vertical = 10
+text = "Settings"
+icon = ExtResource("5_7mycd")
+expand_icon = true
+
+[node name="Pages" type="TabContainer" parent="HSplitContainer" unique_id=1004509633]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_7mycd")
+current_tab = 1
+tabs_visible = false
+
+[node name="Dashboard" parent="HSplitContainer/Pages" unique_id=2144297303 instance=ExtResource("7_kek77")]
+visible = false
+layout_mode = 2
+
+[node name="BlenderVersions" parent="HSplitContainer/Pages" unique_id=1413059445 instance=ExtResource("5_lquwl")]
+layout_mode = 2
+tab_icon = ExtResource("8_ya4ey")
+metadata/_tab_index = 1
+metadata/_edit_lock_ = true
+
+[node name="SideBar" parent="." unique_id=8363792 instance=ExtResource("8_4c57u")]
+unique_name_in_owner = true
+layout_mode = 1
+
+[node name="Windows" type="Node" parent="." unique_id=1627880164]
+unique_name_in_owner = true
+
+[node name="Settings" parent="Windows" unique_id=967994122 instance=ExtResource("8_5vw27")]
+position = Vector2i(360, 241)
+visible = false
+
+[node name="NotificationToast" parent="." unique_id=873796800 instance=ExtResource("10_4c57u")]
+layout_mode = 1
+padding = 50
+
+[connection signal="dragged" from="HSplitContainer" to="." method="_on_h_split_container_dragged"]
+[connection signal="pressed" from="HSplitContainer/NavBar/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
+[connection signal="child_entered_tree" from="HSplitContainer/Pages" to="." method="_on_pages_child_entered_tree"]

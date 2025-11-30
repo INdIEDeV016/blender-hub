@@ -1,0 +1,101 @@
+[gd_scene load_steps=6 format=3 uid="uid://lmxefmhu0o4"]
+
+[ext_resource type="Script" uid="uid://pd15tpowf6" path="res://scenes/gui_elements/notification_toast.gd" id="1_yvsb6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kek77"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.12941177, 0.14901961, 0.1764706, 1)
+border_blend = true
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="Gradient" id="Gradient_4c57u"]
+interpolation_mode = 2
+colors = PackedColorArray(0.5456, 0.58032, 0.62, 0.19607843, 0.5456, 0.58032, 0.62, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_efxa6"]
+gradient = SubResource("Gradient_4c57u")
+use_hdr = true
+fill = 1
+fill_from = Vector2(0.5, 1)
+fill_to = Vector2(0.5, 0.5)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4c57u"]
+content_margin_top = 20.0
+content_margin_bottom = 20.0
+texture = SubResource("GradientTexture2D_efxa6")
+
+[node name="NotificationToast" type="Control" unique_id=254870200]
+custom_minimum_size = Vector2(15, 0)
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -7.5
+offset_right = 7.5
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+script = ExtResource("1_yvsb6")
+
+[node name="Mover" type="PanelContainer" parent="." unique_id=1448333057]
+unique_name_in_owner = true
+clip_children = 2
+clip_contents = true
+custom_minimum_size = Vector2(15, 57)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -7.5
+offset_top = 31.0
+offset_right = 7.5
+offset_bottom = 91.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_kek77")
+
+[node name="BG" type="Panel" parent="Mover" unique_id=685112122]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_4c57u")
+
+[node name="NotificationText" type="RichTextLabel" parent="Mover/BG" unique_id=1015014988]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+theme_override_constants/line_separation = 5
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+shortcut_keys_enabled = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="WaitTimer" type="Timer" parent="Mover" unique_id=1700120735]
+unique_name_in_owner = true
+wait_time = 3.0
+autostart = true
+
+[connection signal="timeout" from="Mover/WaitTimer" to="." method="_on_timer_timeout"]

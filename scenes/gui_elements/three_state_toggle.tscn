@@ -1,0 +1,37 @@
+[gd_scene load_steps=3 format=3 uid="uid://xoxto6tknjm2"]
+
+[ext_resource type="Script" uid="uid://cc2wv585bp1pm" path="res://scenes/gui_elements/three_state_toggle.gd" id="1_kvrpw"]
+[ext_resource type="Texture2D" uid="uid://5pdj7cr2vi0c" path="res://assets/icons/disc.svg" id="1_ysore"]
+
+[node name="ThreeStateToggle" type="Panel"]
+custom_minimum_size = Vector2(250, 80)
+anchors_preset = -1
+offset_right = 250.0
+offset_bottom = 80.0
+size_flags_horizontal = 0
+theme_type_variation = &"ThreeStateToggle"
+script = ExtResource("1_kvrpw")
+
+[node name="Circle" type="TextureRect" parent="."]
+unique_name_in_owner = true
+modulate = Color(0.12941177, 0.14901961, 0.1764706, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+texture = ExtResource("1_ysore")
+expand_mode = 2
+stretch_mode = 5
+
+[connection signal="draw" from="." to="." method="_on_draw"]
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]

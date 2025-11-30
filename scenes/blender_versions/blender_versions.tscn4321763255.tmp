@@ -1,0 +1,138 @@
+[gd_scene load_steps=10 format=3 uid="uid://cpq6qkufeji3o"]
+
+[ext_resource type="PackedScene" uid="uid://dc53vv7auyhcu" path="res://scenes/base_classes/page.tscn" id="1_2h35n"]
+[ext_resource type="Script" uid="uid://h7qudlp66i14" path="res://scenes/blender_versions/blender_versions.gd" id="2_we5yv"]
+[ext_resource type="Texture2D" uid="uid://dukobqjhcx2ei" path="res://assets/icons/add.svg" id="3_27n4e"]
+[ext_resource type="PackedScene" uid="uid://bh8p8tmx7koqt" path="res://scenes/gui_elements/table.tscn" id="3_34a8n"]
+[ext_resource type="Script" uid="uid://cdvro8km2srol" path="res://scenes/blender_versions/installed_blenders.gd" id="5_3e84u"]
+[ext_resource type="Texture2D" uid="uid://dj6w528jkvxt4" path="res://assets/icons/refresh.svg" id="5_bkhfx"]
+[ext_resource type="Script" uid="uid://bm4rn410eqk5" path="res://scenes/blender_versions/new_daily_builds.gd" id="7_3e84u"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_h03gf"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_b4jhp"]
+font_size = 32
+
+[node name="BlenderVersions" instance=ExtResource("1_2h35n")]
+script = ExtResource("2_we5yv")
+
+[node name="MarginContainer" parent="VBoxContainer" index="0"]
+mouse_filter = 2
+
+[node name="Header" parent="VBoxContainer/MarginContainer/VBoxContainer" index="0"]
+mouse_filter = 2
+
+[node name="Title" parent="VBoxContainer/MarginContainer/VBoxContainer/Header/HBoxContainer/VBoxContainer" index="0"]
+text = "Blender Versions"
+
+[node name="SubText" parent="VBoxContainer/MarginContainer/VBoxContainer/Header/HBoxContainer/VBoxContainer" index="1"]
+text = "Explore, download and manage different versions of Blender..."
+
+[node name="AddPrevious" type="Button" parent="VBoxContainer/MarginContainer/VBoxContainer/Header/HBoxContainer/Tools" index="0"]
+layout_mode = 2
+size_flags_vertical = 4
+text = "Add Previous"
+icon = ExtResource("3_27n4e")
+
+[node name="CheckForUpdates" type="Button" parent="VBoxContainer/MarginContainer/VBoxContainer/Header/HBoxContainer/Tools" index="1"]
+layout_mode = 2
+theme_type_variation = &"AscentedButton"
+theme_override_font_sizes/font_size = 22
+text = "Check For Updates"
+icon = ExtResource("5_bkhfx")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer/VBoxContainer/Body" index="0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 50
+
+[node name="TagsContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer/VBoxContainer/Body/VBoxContainer" index="0"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="Button" type="Button" parent="VBoxContainer/MarginContainer/VBoxContainer/Body/VBoxContainer/TagsContainer" index="0"]
+layout_mode = 2
+theme_type_variation = &"TagButton"
+toggle_mode = true
+button_pressed = true
+button_group = SubResource("ButtonGroup_h03gf")
+text = "All"
+
+[node name="InstalledBlenders" type="VBoxContainer" parent="VBoxContainer/MarginContainer/VBoxContainer/Body/VBoxContainer" index="1"]
+layout_mode = 2
+theme_override_constants/separation = 25
+script = ExtResource("5_3e84u")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer/VBoxContainer/Body/VBoxContainer/InstalledBlenders" index="0"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer/Body/VBoxContainer/InstalledBlenders/HBoxContainer" index="0"]
+layout_mode = 2
+text = "Installed Blenders"
+label_settings = SubResource("LabelSettings_b4jhp")
+
+[node name="Refresh" type="Button" parent="VBoxContainer/MarginContainer/VBoxContainer/Body/VBoxContainer/InstalledBlenders/HBoxContainer" index="1"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+icon = ExtResource("5_bkhfx")
+expand_icon = true
+
+[node name="Table" parent="VBoxContainer/MarginContainer/VBoxContainer/Body/VBoxContainer/InstalledBlenders" index="1" instance=ExtResource("3_34a8n")]
+layout_mode = 2
+
+[node name="NewDailyBuilds" type="VBoxContainer" parent="VBoxContainer/MarginContainer/VBoxContainer/Body/VBoxContainer" index="2"]
+layout_mode = 2
+theme_override_constants/separation = 25
+script = ExtResource("7_3e84u")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer/VBoxContainer/Body/VBoxContainer/NewDailyBuilds" index="0"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer/Body/VBoxContainer/NewDailyBuilds/HBoxContainer" index="0"]
+layout_mode = 2
+text = "New Daily Builds"
+label_settings = SubResource("LabelSettings_b4jhp")
+
+[node name="Refresh" type="Button" parent="VBoxContainer/MarginContainer/VBoxContainer/Body/VBoxContainer/NewDailyBuilds/HBoxContainer" index="1"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+icon = ExtResource("5_bkhfx")
+expand_icon = true
+
+[node name="Table" parent="VBoxContainer/MarginContainer/VBoxContainer/Body/VBoxContainer/NewDailyBuilds" index="1" instance=ExtResource("3_34a8n")]
+layout_mode = 2
+
+[node name="NewExperimentalVersions" type="VBoxContainer" parent="VBoxContainer/MarginContainer/VBoxContainer/Body/VBoxContainer" index="3"]
+layout_mode = 2
+theme_override_constants/separation = 25
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer/VBoxContainer/Body/VBoxContainer/NewExperimentalVersions" index="0"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer/Body/VBoxContainer/NewExperimentalVersions/HBoxContainer" index="0"]
+layout_mode = 2
+text = "New Experimental Versions"
+label_settings = SubResource("LabelSettings_b4jhp")
+
+[node name="Refresh" type="Button" parent="VBoxContainer/MarginContainer/VBoxContainer/Body/VBoxContainer/NewExperimentalVersions/HBoxContainer" index="1"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+icon = ExtResource("5_bkhfx")
+expand_icon = true
+
+[node name="Table" parent="VBoxContainer/MarginContainer/VBoxContainer/Body/VBoxContainer/NewExperimentalVersions" index="1" instance=ExtResource("3_34a8n")]
+layout_mode = 2
+
+[connection signal="pressed" from="VBoxContainer/MarginContainer/VBoxContainer/Body/VBoxContainer/InstalledBlenders/HBoxContainer/Refresh" to="VBoxContainer/MarginContainer/VBoxContainer/Body/VBoxContainer/InstalledBlenders" method="_on_refresh_pressed"]
+[connection signal="table_changed" from="VBoxContainer/MarginContainer/VBoxContainer/Body/VBoxContainer/InstalledBlenders/Table" to="." method="_set_tags_container"]
+[connection signal="pressed" from="VBoxContainer/MarginContainer/VBoxContainer/Body/VBoxContainer/NewDailyBuilds/HBoxContainer/Refresh" to="VBoxContainer/MarginContainer/VBoxContainer/Body/VBoxContainer/NewDailyBuilds" method="_on_refresh_pressed"]
+[connection signal="table_changed" from="VBoxContainer/MarginContainer/VBoxContainer/Body/VBoxContainer/NewDailyBuilds/Table" to="." method="_set_tags_container"]
+[connection signal="table_changed" from="VBoxContainer/MarginContainer/VBoxContainer/Body/VBoxContainer/NewExperimentalVersions/Table" to="." method="_set_tags_container"]

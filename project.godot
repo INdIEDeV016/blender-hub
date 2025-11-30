@@ -1,0 +1,62 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="Blender Hub"
+config/description="An app that helps manage different Blender Installations, Manage user made Projects, Check news about newer Blender Versions."
+config/version="1.0.1"
+config/tags=PackedStringArray("app")
+run/main_scene="uid://bgcxwniiv25x7"
+config/features=PackedStringArray("4.6", "GL Compatibility")
+run/low_processor_mode=true
+config/icon="uid://dtwbitrhdmkfj"
+
+[autoload]
+
+Settings="*res://autoloads/settings.gd"
+Notification="*res://autoloads/notification.gd"
+Blender="*res://autoloads/blender.gd"
+Reference="*uid://b4sjmxj2hcdm8"
+
+[display]
+
+window/subwindows/embed_subwindows=false
+
+[editor]
+
+version_control/autoload_on_startup=true
+
+[editor_plugins]
+
+enabled=PackedStringArray()
+
+[file_customization]
+
+folder_colors={
+"res://addons/": "blue",
+"res://assets/": "green",
+"res://assets/fonts/": "yellow",
+"res://assets/icons/": "pink",
+"res://assets/themes/": "blue"
+}
+
+[gui]
+
+theme/default_font_multichannel_signed_distance_field=true
+theme/custom="uid://eo7v7pngpuf1"
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=2
+rendering_device/driver.windows="d3d12"
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
+textures/vram_compression/import_etc2_astc=true

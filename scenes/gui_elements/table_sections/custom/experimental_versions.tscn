@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://87fyxpp28yav"]
+
+[ext_resource type="PackedScene" uid="uid://d4mdbuc23wo7u" path="res://scenes/gui_elements/table_sections/table_section.tscn" id="1_jyrbp"]
+[ext_resource type="Script" uid="uid://j8v3jgnf1c23" path="res://scenes/gui_elements/table_sections/custom/experimental_versions.gd" id="2_cnwdo"]
+
+[node name="ExperimentalVersions" unique_id=116823883 instance=ExtResource("1_jyrbp")]
+script = ExtResource("2_cnwdo")
+empty_table_message = "No new experimental versions are available. Check back later."
+
+[node name="Title" parent="HBoxContainer" parent_id_path=PackedInt32Array(2145503069) index="0" unique_id=805680009]
+text = "New Experimental Versions"

@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://b5srppurvg676"]
+
+[ext_resource type="PackedScene" uid="uid://d4mdbuc23wo7u" path="res://scenes/gui_elements/table_sections/table_section.tscn" id="1_hfjp5"]
+[ext_resource type="Script" uid="uid://dy8hxb6kh24hv" path="res://scenes/gui_elements/table_sections/custom/new_daily_builds.gd" id="2_4h0f2"]
+
+[node name="NewDailyBuilds" unique_id=116823883 instance=ExtResource("1_hfjp5")]
+script = ExtResource("2_4h0f2")
+empty_table_message = "No new versions available. Check back later. "
+
+[node name="Title" parent="HBoxContainer" parent_id_path=PackedInt32Array(2145503069) index="0" unique_id=805680009]
+text = "New Daily Builds"

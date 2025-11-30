@@ -1,0 +1,49 @@
+[gd_scene load_steps=4 format=3 uid="uid://btddcifvnv2c8"]
+
+[ext_resource type="PackedScene" uid="uid://4tp7n48kgmc3" path="res://scenes/gui_elements/parameter_field/field.tscn" id="1_laaj8"]
+[ext_resource type="Script" uid="uid://br7ans7ijffns" path="res://scenes/gui_elements/parameter_field/field_text.gd" id="2_kfh7u"]
+[ext_resource type="Texture2D" uid="uid://ds6j7mjhxnxu8" path="res://assets/icons/load.svg" id="3_kfh7u"]
+
+[node name="FieldText" unique_id=2075972840 instance=ExtResource("1_laaj8")]
+offset_right = 528.0
+offset_bottom = 40.0
+script = ExtResource("2_kfh7u")
+type = 0
+placeholder_text = ""
+label = "Field Text"
+value = ""
+
+[node name="Label" parent="." index="0" unique_id=106732588]
+text = "Field Text"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." index="1" unique_id=569545644]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="LineEdit" type="LineEdit" parent="HBoxContainer" index="0" unique_id=583695500]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(208, 40)
+layout_mode = 2
+size_flags_horizontal = 3
+focus_behavior_recursive = 2
+
+[node name="Folder" type="Button" parent="HBoxContainer" index="1" unique_id=151566069]
+layout_mode = 2
+icon = ExtResource("3_kfh7u")
+
+[node name="SelectFolder" type="FileDialog" parent="." index="2" unique_id=1347126770]
+unique_name_in_owner = true
+title = "Open a Directory"
+file_mode = 2
+access = 2
+use_native_dialog = true
+
+[node name="SelectFile" type="FileDialog" parent="." index="3" unique_id=1937117706]
+unique_name_in_owner = true
+title = "Open a File"
+file_mode = 0
+access = 2
+use_native_dialog = true
+
+[connection signal="text_changed" from="HBoxContainer/LineEdit" to="." method="_on_field_value_changed"]
+[connection signal="text_submitted" from="HBoxContainer/LineEdit" to="." method="_on_field_value_changed"]

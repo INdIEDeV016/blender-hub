@@ -1,0 +1,98 @@
+[gd_scene load_steps=8 format=3 uid="uid://dhpmb0y01wbj6"]
+
+[ext_resource type="FontFile" uid="uid://m73h2rcpj4j1" path="res://assets/fonts/Inter.woff2" id="1_26ncd"]
+[ext_resource type="PackedScene" uid="uid://ccssbfj7xoye7" path="res://scenes/base_classes/window.tscn" id="1_vu5fi"]
+[ext_resource type="Script" uid="uid://dybxexcv7kjgu" path="res://scenes/settings/settings_window.gd" id="2_qio8b"]
+[ext_resource type="PackedScene" uid="uid://c7luvh3c462y8" path="res://scenes/gui_elements/h_tabs.tscn" id="4_v1hle"]
+
+[sub_resource type="FontVariation" id="FontVariation_6ni5k"]
+base_font = ExtResource("1_26ncd")
+variation_opentype = {
+1869640570: 20,
+2003265652: 700
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_tt6xx"]
+font = SubResource("FontVariation_6ni5k")
+font_size = 40
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tt6xx"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+
+[node name="Settings" unique_id=2079227305 instance=ExtResource("1_vu5fi")]
+position = Vector2i(0, 36)
+size = Vector2i(1240, 735)
+transient = true
+transient_to_focused = true
+exclusive = true
+script = ExtResource("2_qio8b")
+
+[node name="Background" parent="." index="0" unique_id=1062398829]
+focus_behavior_recursive = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background" index="0" unique_id=1785312698]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="Label" type="Label" parent="Background/VBoxContainer" index="0" unique_id=1456987880]
+layout_mode = 2
+text = "Settings"
+label_settings = SubResource("LabelSettings_tt6xx")
+
+[node name="HTabs" parent="Background/VBoxContainer" index="1" unique_id=1960430192 instance=ExtResource("4_v1hle")]
+unique_name_in_owner = true
+layout_mode = 2
+focus_behavior_recursive = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Background/VBoxContainer" index="2" unique_id=1110226507]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_tt6xx")
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 4
+
+[node name="FoldedContainers" type="VBoxContainer" parent="Background/VBoxContainer/ScrollContainer" index="0" unique_id=684602317]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 30
+
+[node name="Themes" type="FoldableContainer" parent="Background/VBoxContainer/ScrollContainer/FoldedContainers" index="0" unique_id=589939885]
+layout_mode = 2
+theme_type_variation = &"TransparentFoldable"
+title = "Themes"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/VBoxContainer/ScrollContainer/FoldedContainers/Themes" index="0" unique_id=1407222940]
+layout_mode = 2
+
+[node name="Downloads" type="FoldableContainer" parent="Background/VBoxContainer/ScrollContainer/FoldedContainers" index="1" unique_id=64707769]
+layout_mode = 2
+theme_type_variation = &"TransparentFoldable"
+title = "Downloads"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/VBoxContainer/ScrollContainer/FoldedContainers/Downloads" index="0" unique_id=513455826]
+layout_mode = 2
+
+[node name="BlenderVersions" type="FoldableContainer" parent="Background/VBoxContainer/ScrollContainer/FoldedContainers" index="2" unique_id=1699979922]
+layout_mode = 2
+theme_type_variation = &"TransparentFoldable"
+title = "Blender Versions"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/VBoxContainer/ScrollContainer/FoldedContainers/BlenderVersions" index="0" unique_id=777645151]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="Projects" type="FoldableContainer" parent="Background/VBoxContainer/ScrollContainer/FoldedContainers" index="3" unique_id=751818783]
+layout_mode = 2
+theme_type_variation = &"TransparentFoldable"
+title = "Projects"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/VBoxContainer/ScrollContainer/FoldedContainers/Projects" index="0" unique_id=885247898]
+layout_mode = 2
+
+[connection signal="about_to_popup" from="." to="." method="_on_about_to_popup"]
+[connection signal="child_entered_tree" from="Background/VBoxContainer/ScrollContainer/FoldedContainers" to="." method="_on_folded_settings_child_entered_tree"]

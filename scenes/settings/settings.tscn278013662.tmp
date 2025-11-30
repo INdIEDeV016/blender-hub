@@ -1,0 +1,174 @@
+[gd_scene load_steps=13 format=3 uid="uid://dhpmb0y01wbj6"]
+
+[ext_resource type="FontFile" uid="uid://m73h2rcpj4j1" path="res://assets/fonts/Inter.woff2" id="1_26ncd"]
+[ext_resource type="PackedScene" uid="uid://ccssbfj7xoye7" path="res://scenes/base_classes/window.tscn" id="1_vu5fi"]
+[ext_resource type="Script" uid="uid://vrfuaqgg4egi" path="res://scenes/settings/settings.gd" id="2_1slea"]
+[ext_resource type="PackedScene" uid="uid://xoxto6tknjm2" path="res://scenes/gui_elements/three_state_toggle.tscn" id="3_tt6xx"]
+[ext_resource type="Script" uid="uid://droh3hnywcr45" path="res://scenes/settings/signal_reactor.gd" id="3_vghtj"]
+[ext_resource type="PackedScene" uid="uid://c7luvh3c462y8" path="res://scenes/gui_elements/h_tabs.tscn" id="4_v1hle"]
+[ext_resource type="PackedScene" uid="uid://4tp7n48kgmc3" path="res://scenes/base_classes/parameter_field.tscn" id="7_h6son"]
+
+[sub_resource type="FontVariation" id="FontVariation_6ni5k"]
+base_font = ExtResource("1_26ncd")
+variation_opentype = {
+1869640570: 20,
+2003265652: 700
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_tt6xx"]
+font = SubResource("FontVariation_6ni5k")
+font_size = 40
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tt6xx"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+
+[sub_resource type="FontVariation" id="FontVariation_vu5fi"]
+base_font = ExtResource("1_26ncd")
+variation_opentype = {
+1869640570: 14,
+2003265652: 400
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_vghtj"]
+font = SubResource("FontVariation_vu5fi")
+font_color = Color(0.54509807, 0.5803922, 0.61960787, 1)
+
+[node name="Settings" instance=ExtResource("1_vu5fi")]
+position = Vector2i(156, 144)
+size = Vector2i(1140, 735)
+transient = true
+transient_to_focused = true
+exclusive = true
+script = ExtResource("2_1slea")
+
+[node name="SignalReactor" type="Node" parent="." index="0"]
+script = ExtResource("3_vghtj")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background" index="0"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="Label" type="Label" parent="Background/VBoxContainer" index="0"]
+layout_mode = 2
+text = "Settings"
+label_settings = SubResource("LabelSettings_tt6xx")
+
+[node name="HTabs" parent="Background/VBoxContainer" index="1" instance=ExtResource("4_v1hle")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Background/VBoxContainer" index="2"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_tt6xx")
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 4
+
+[node name="FoldedContainers" type="VBoxContainer" parent="Background/VBoxContainer/ScrollContainer" index="0"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 30
+
+[node name="Themes" type="FoldableContainer" parent="Background/VBoxContainer/ScrollContainer/FoldedContainers" index="0"]
+layout_mode = 2
+theme_type_variation = &"TransparentFoldable"
+title = "Themes"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/VBoxContainer/ScrollContainer/FoldedContainers/Themes" index="0"]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="ThreeStateToggle" parent="Background/VBoxContainer/ScrollContainer/FoldedContainers/Themes/VBoxContainer" index="0" instance=ExtResource("3_tt6xx")]
+layout_mode = 2
+
+[node name="Themes" type="HBoxContainer" parent="Background/VBoxContainer/ScrollContainer/FoldedContainers/Themes/VBoxContainer" index="1"]
+layout_mode = 2
+
+[node name="Light" type="Label" parent="Background/VBoxContainer/ScrollContainer/FoldedContainers/Themes/VBoxContainer/Themes" index="0"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Light"
+
+[node name="System" type="Label" parent="Background/VBoxContainer/ScrollContainer/FoldedContainers/Themes/VBoxContainer/Themes" index="1"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "System"
+horizontal_alignment = 1
+
+[node name="Dark" type="Label" parent="Background/VBoxContainer/ScrollContainer/FoldedContainers/Themes/VBoxContainer/Themes" index="2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Dark"
+horizontal_alignment = 2
+
+[node name="BlenderVersions" type="FoldableContainer" parent="Background/VBoxContainer/ScrollContainer/FoldedContainers" index="1"]
+layout_mode = 2
+theme_type_variation = &"TransparentFoldable"
+title = "Blender Versions"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/VBoxContainer/ScrollContainer/FoldedContainers/BlenderVersions" index="0"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="HFlowContainer" parent="Background/VBoxContainer/ScrollContainer/FoldedContainers/BlenderVersions/VBoxContainer" index="0" instance=ExtResource("7_h6son")]
+layout_mode = 2
+
+[node name="HFlowContainer2" type="HFlowContainer" parent="Background/VBoxContainer/ScrollContainer/FoldedContainers/BlenderVersions/VBoxContainer" index="1"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_constants/h_separation = 20
+theme_override_constants/v_separation = 4
+
+[node name="Label" type="Label" parent="Background/VBoxContainer/ScrollContainer/FoldedContainers/BlenderVersions/VBoxContainer/HFlowContainer2" index="0"]
+custom_minimum_size = Vector2(300, 40)
+layout_mode = 2
+size_flags_vertical = 1
+text = "Download Website URL"
+label_settings = SubResource("LabelSettings_vghtj")
+vertical_alignment = 1
+
+[node name="LineEdit" type="LineEdit" parent="Background/VBoxContainer/ScrollContainer/FoldedContainers/BlenderVersions/VBoxContainer/HFlowContainer2" index="1"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "https://builder.blender.org"
+placeholder_text = "Enter the URL here..."
+expand_to_text_length = true
+
+[node name="Projects" type="FoldableContainer" parent="Background/VBoxContainer/ScrollContainer/FoldedContainers" index="2"]
+layout_mode = 2
+theme_type_variation = &"TransparentFoldable"
+title = "Projects"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/VBoxContainer/ScrollContainer/FoldedContainers/Projects" index="0"]
+layout_mode = 2
+
+[node name="HFlowContainer" type="HFlowContainer" parent="Background/VBoxContainer/ScrollContainer/FoldedContainers/Projects/VBoxContainer" index="0"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/h_separation = 20
+theme_override_constants/v_separation = 4
+
+[node name="Label" type="Label" parent="Background/VBoxContainer/ScrollContainer/FoldedContainers/Projects/VBoxContainer/HFlowContainer" index="0"]
+custom_minimum_size = Vector2(300, 40)
+layout_mode = 2
+size_flags_vertical = 1
+text = "Default Projects Folder"
+label_settings = SubResource("LabelSettings_vghtj")
+vertical_alignment = 1
+
+[node name="LineEdit" type="LineEdit" parent="Background/VBoxContainer/ScrollContainer/FoldedContainers/Projects/VBoxContainer/HFlowContainer" index="1"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Enter or paste the project path here"
+expand_to_text_length = true
+
+[connection signal="child_entered_tree" from="Background/VBoxContainer/ScrollContainer/FoldedContainers" to="." method="_on_folded_settings_child_entered_tree"]
+[connection signal="state" from="Background/VBoxContainer/ScrollContainer/FoldedContainers/Themes/VBoxContainer/ThreeStateToggle" to="SignalReactor" method="_on_three_state_toggle_state"]

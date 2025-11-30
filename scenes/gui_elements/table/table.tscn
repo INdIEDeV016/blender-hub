@@ -1,0 +1,81 @@
+[gd_scene load_steps=3 format=3 uid="uid://bh8p8tmx7koqt"]
+
+[ext_resource type="Script" uid="uid://d10aghcktyt34" path="res://scenes/gui_elements/table/table.gd" id="1_j3e21"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_drj5s"]
+font_size = 12
+font_color = Color(0.54509807, 0.5803922, 0.61960787, 1)
+
+[node name="Table" type="PanelContainer" unique_id=410873373]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 64.0
+grow_horizontal = 2
+size_flags_vertical = 0
+theme_type_variation = &"Table"
+script = ExtResource("1_j3e21")
+strech_ratio_per_column = Array[float]([1.0, 1.0, 1.0, 0.5])
+
+[node name="MainContainer" type="VBoxContainer" parent="." unique_id=568309090]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/separation = -1
+
+[node name="Header" type="PanelContainer" parent="MainContainer" unique_id=393427468]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"TableHeader"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MainContainer/Header" unique_id=1573398545]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Versions" type="Label" parent="MainContainer/Header/HBoxContainer" unique_id=1821789976]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 1
+theme_type_variation = &"TableHeaderLabel"
+text = "Versions"
+vertical_alignment = 1
+uppercase = true
+
+[node name="ReleaseDate" type="Label" parent="MainContainer/Header/HBoxContainer" unique_id=1859942557]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 1
+text = "Release Date"
+vertical_alignment = 1
+uppercase = true
+
+[node name="Stability" type="Label" parent="MainContainer/Header/HBoxContainer" unique_id=127533]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 1
+text = "Stability"
+vertical_alignment = 1
+uppercase = true
+
+[node name="Action" type="Label" parent="MainContainer/Header/HBoxContainer" unique_id=1580115666]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 1
+text = "Action"
+vertical_alignment = 1
+uppercase = true
+
+[node name="Empty" type="PanelContainer" parent="MainContainer" unique_id=1277543189]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"TableRow"
+
+[node name="Message" type="Label" parent="MainContainer/Empty" unique_id=1451534144]
+layout_mode = 2
+theme_type_variation = &"EmptyTableLabel"
+text = "Table is empty"
+label_settings = SubResource("LabelSettings_drj5s")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="table_changed" from="." to="." method="_on_table_changed"]

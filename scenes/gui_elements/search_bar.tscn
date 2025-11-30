@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://bdhqvfpht3mb5"]
+
+[ext_resource type="Texture2D" uid="uid://bwk1e5aa24ow" path="res://assets/icons/zoom_selected.svg" id="1_yt5dg"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yt5dg"]
+
+[node name="SearchBar" type="PanelContainer"]
+clip_children = 2
+custom_minimum_size = Vector2(275, 50)
+offset_right = 275.0
+offset_bottom = 50.0
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_yt5dg")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Search" type="Button" parent="HBoxContainer"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+theme_type_variation = &"SearchButton"
+icon = ExtResource("1_yt5dg")
+expand_icon = true
+
+[node name="SearchBar" type="LineEdit" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_behavior_recursive = 2
+theme_type_variation = &"SearchLineEdit"
+placeholder_text = "Search Versions..."
+caret_blink = true

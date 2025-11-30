@@ -1,0 +1,202 @@
+[gd_scene load_steps=13 format=3 uid="uid://q1ny5epx0qdm"]
+
+[ext_resource type="PackedScene" uid="uid://dc53vv7auyhcu" path="res://scenes/base_classes/page.tscn" id="1_iafse"]
+[ext_resource type="PackedScene" uid="uid://bk6xta1634ajm" path="res://scenes/base_classes/project_card.tscn" id="2_3km4k"]
+[ext_resource type="Script" uid="uid://c438c47dab84u" path="res://scenes/dashboard/dashboard.gd" id="2_4jrbh"]
+[ext_resource type="PackedScene" uid="uid://o6nf18mvcvvj" path="res://scenes/base_classes/news_card.tscn" id="4_5ihmn"]
+[ext_resource type="PackedScene" uid="uid://88iqlpm5t42u" path="res://scenes/gui_elements/table_sections/custom/installed_blenders.tscn" id="4_7agwo"]
+[ext_resource type="Script" uid="uid://bqoonhy5kvfr3" path="res://scenes/dashboard/news.gd" id="4_pq66u"]
+[ext_resource type="Script" uid="uid://dk1v6i8rx5ifc" path="res://scenes/dashboard/storage_used.gd" id="6_7agwo"]
+[ext_resource type="Texture2D" uid="uid://dj6w528jkvxt4" path="res://assets/icons/refresh.svg" id="7_qmip6"]
+[ext_resource type="PackedScene" uid="uid://c7luvh3c462y8" path="res://scenes/gui_elements/h_tabs.tscn" id="7_yxfa0"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_iwa43"]
+font_size = 20
+
+[sub_resource type="Gradient" id="Gradient_qmip6"]
+offsets = PackedFloat32Array(0, 0.5, 1)
+colors = PackedColorArray(0, 1, 0.39215687, 1, 1, 1, 0, 1, 1, 0, 0.3137255, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7agwo"]
+content_margin_left = 10.0
+content_margin_top = 5.0
+content_margin_right = 10.0
+content_margin_bottom = 5.0
+bg_color = Color(0.08627451, 0.105882354, 0.13333334, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.12941177, 0.14901961, 0.1764706, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[node name="Dashboard" unique_id=600012876 instance=ExtResource("1_iafse")]
+script = ExtResource("2_4jrbh")
+
+[node name="Title" parent="VBoxContainer/VBoxContainer/Header/HBoxContainer/VBoxContainer" parent_id_path=PackedInt32Array(1595735413) index="0" unique_id=1714985580]
+tooltip_text = "Dashboard"
+text = "Dashboard"
+
+[node name="SubText" parent="VBoxContainer/VBoxContainer/Header/HBoxContainer/VBoxContainer" parent_id_path=PackedInt32Array(1595735413) index="1" unique_id=349069388]
+tooltip_text = "Quickly open your recent projects, install new versions of Blender or see what's new in the community."
+text = "Quickly open your recent projects, install new versions of Blender or see what's new in the community."
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/VBoxContainer/Body" parent_id_path=PackedInt32Array(1956228554) index="0" unique_id=2121715878]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/VBoxContainer/Body/ScrollContainer" index="0" unique_id=968174664]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 60
+
+[node name="Projects" type="VBoxContainer" parent="VBoxContainer/VBoxContainer/Body/ScrollContainer/VBoxContainer" index="0" unique_id=1759191579]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="VBoxContainer/VBoxContainer/Body/ScrollContainer/VBoxContainer/Projects" index="0" unique_id=2055058778]
+layout_mode = 2
+text = "Recently Opened Projects"
+label_settings = SubResource("LabelSettings_iwa43")
+
+[node name="HFlowContainer" type="HFlowContainer" parent="VBoxContainer/VBoxContainer/Body/ScrollContainer/VBoxContainer/Projects" index="1" unique_id=161481336]
+layout_mode = 2
+
+[node name="ProjectCard" parent="VBoxContainer/VBoxContainer/Body/ScrollContainer/VBoxContainer/Projects/HFlowContainer" index="0" unique_id=459487795 instance=ExtResource("2_3km4k")]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/VBoxContainer/Body/ScrollContainer/VBoxContainer" index="1" unique_id=836825748]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 60
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/VBoxContainer/Body/ScrollContainer/VBoxContainer/HBoxContainer2" index="0" unique_id=2123036402]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+theme_override_constants/separation = 60
+
+[node name="InstalledBlenders" parent="VBoxContainer/VBoxContainer/Body/ScrollContainer/VBoxContainer/HBoxContainer2/VBoxContainer" index="0" unique_id=116823883 instance=ExtResource("4_7agwo")]
+layout_mode = 2
+
+[node name="StorageUsed" type="VBoxContainer" parent="VBoxContainer/VBoxContainer/Body/ScrollContainer/VBoxContainer/HBoxContainer2/VBoxContainer" index="1" unique_id=1547531269]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 20
+script = ExtResource("6_7agwo")
+danger_gradient = SubResource("Gradient_qmip6")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/VBoxContainer/Body/ScrollContainer/VBoxContainer/HBoxContainer2/VBoxContainer/StorageUsed" index="0" unique_id=1027302345]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/VBoxContainer/Body/ScrollContainer/VBoxContainer/HBoxContainer2/VBoxContainer/StorageUsed/HBoxContainer" index="0" unique_id=1542463060]
+layout_mode = 2
+text = "Storage Usage"
+label_settings = SubResource("LabelSettings_iwa43")
+
+[node name="StorageRefresh" type="Button" parent="VBoxContainer/VBoxContainer/Body/ScrollContainer/VBoxContainer/HBoxContainer2/VBoxContainer/StorageUsed/HBoxContainer" index="1" unique_id=2130033375]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_constants/icon_max_width = 24
+icon = ExtResource("7_qmip6")
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/VBoxContainer/Body/ScrollContainer/VBoxContainer/HBoxContainer2/VBoxContainer/StorageUsed" index="1" unique_id=2053895057]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/VBoxContainer/Body/ScrollContainer/VBoxContainer/HBoxContainer2/VBoxContainer/StorageUsed/PanelContainer" index="0" unique_id=443032869]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/VBoxContainer/Body/ScrollContainer/VBoxContainer/HBoxContainer2/VBoxContainer/StorageUsed/PanelContainer/MarginContainer" index="0" unique_id=179630502]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="DriveName" type="Label" parent="VBoxContainer/VBoxContainer/Body/ScrollContainer/VBoxContainer/HBoxContainer2/VBoxContainer/StorageUsed/PanelContainer/MarginContainer/HBoxContainer" index="0" unique_id=377476942]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+text = "Storage Used"
+vertical_alignment = 1
+
+[node name="StorageProgress" type="ProgressBar" parent="VBoxContainer/VBoxContainer/Body/ScrollContainer/VBoxContainer/HBoxContainer2/VBoxContainer/StorageUsed/PanelContainer/MarginContainer/HBoxContainer" index="1" unique_id=609958021]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 8)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+value = 50.0
+show_percentage = false
+
+[node name="StoragePercentage" type="Label" parent="VBoxContainer/VBoxContainer/Body/ScrollContainer/VBoxContainer/HBoxContainer2/VBoxContainer/StorageUsed/PanelContainer/MarginContainer/HBoxContainer" index="2" unique_id=756795112]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_vertical = 1
+text = "50 %"
+vertical_alignment = 1
+
+[node name="StorageAmount" type="Label" parent="VBoxContainer/VBoxContainer/Body/ScrollContainer/VBoxContainer/HBoxContainer2/VBoxContainer/StorageUsed/PanelContainer/MarginContainer/HBoxContainer" index="3" unique_id=1260721887]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_7agwo")
+text = "00 GB / 00 GB"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="News" type="VBoxContainer" parent="VBoxContainer/VBoxContainer/Body/ScrollContainer/VBoxContainer/HBoxContainer2" index="1" unique_id=1527267278]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("4_pq66u")
+
+[node name="Label" type="RichTextLabel" parent="VBoxContainer/VBoxContainer/Body/ScrollContainer/VBoxContainer/HBoxContainer2/News" index="0" unique_id=104183012]
+layout_mode = 2
+tooltip_text = "If clicked this will open 
+https://www.blender.org/news
+in your default browser."
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "[url=https://www.blender.org/news/]News & Updates[/url]"
+fit_content = true
+meta_underlined = false
+
+[node name="HTabs" parent="VBoxContainer/VBoxContainer/Body/ScrollContainer/VBoxContainer/HBoxContainer2/News" index="1" unique_id=557874531 instance=ExtResource("7_yxfa0")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="TabContainer" type="TabContainer" parent="VBoxContainer/VBoxContainer/Body/ScrollContainer/VBoxContainer/HBoxContainer2/News" index="2" unique_id=1195107436]
+layout_mode = 2
+current_tab = 1
+tabs_visible = false
+
+[node name="News" type="HFlowContainer" parent="VBoxContainer/VBoxContainer/Body/ScrollContainer/VBoxContainer/HBoxContainer2/News/TabContainer" index="1" unique_id=1497283992]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="PressReleases" type="HFlowContainer" parent="VBoxContainer/VBoxContainer/Body/ScrollContainer/VBoxContainer/HBoxContainer2/News/TabContainer" index="2" unique_id=1013499694]
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="NewsCard" parent="VBoxContainer/VBoxContainer/Body/ScrollContainer/VBoxContainer/HBoxContainer2/News/TabContainer/PressReleases" index="0" unique_id=2050968654 instance=ExtResource("4_5ihmn")]
+visible = false
+layout_mode = 2
+
+[connection signal="pressed" from="VBoxContainer/VBoxContainer/Body/ScrollContainer/VBoxContainer/HBoxContainer2/VBoxContainer/StorageUsed/HBoxContainer/StorageRefresh" to="VBoxContainer/VBoxContainer/Body/ScrollContainer/VBoxContainer/HBoxContainer2/VBoxContainer/StorageUsed" method="refresh"]
+[connection signal="value_changed" from="VBoxContainer/VBoxContainer/Body/ScrollContainer/VBoxContainer/HBoxContainer2/VBoxContainer/StorageUsed/PanelContainer/MarginContainer/HBoxContainer/StorageProgress" to="VBoxContainer/VBoxContainer/Body/ScrollContainer/VBoxContainer/HBoxContainer2/VBoxContainer/StorageUsed" method="_on_storage_progress_value_changed"]
+[connection signal="meta_clicked" from="VBoxContainer/VBoxContainer/Body/ScrollContainer/VBoxContainer/HBoxContainer2/News/Label" to="VBoxContainer/VBoxContainer/Body/ScrollContainer/VBoxContainer/HBoxContainer2/News" method="_on_label_meta_clicked"]
+[connection signal="child_entered_tree" from="VBoxContainer/VBoxContainer/Body/ScrollContainer/VBoxContainer/HBoxContainer2/News/TabContainer" to="VBoxContainer/VBoxContainer/Body/ScrollContainer/VBoxContainer/HBoxContainer2/News" method="_on_tab_container_child_entered_tree"]

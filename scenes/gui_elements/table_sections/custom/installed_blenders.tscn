@@ -1,0 +1,51 @@
+[gd_scene load_steps=5 format=3 uid="uid://88iqlpm5t42u"]
+
+[ext_resource type="PackedScene" uid="uid://d4mdbuc23wo7u" path="res://scenes/gui_elements/table_sections/table_section.tscn" id="1_pkkch"]
+[ext_resource type="Script" uid="uid://0ftq4twcha0y" path="res://scenes/gui_elements/table_sections/custom/installed_blenders.gd" id="2_le1ba"]
+[ext_resource type="Texture2D" uid="uid://dukobqjhcx2ei" path="res://assets/icons/add.svg" id="3_2bgod"]
+[ext_resource type="Texture2D" uid="uid://d1kion46746ol" path="res://assets/icons/download.svg" id="4_b41lk"]
+
+[node name="InstalledBlenders" unique_id=116823883 instance=ExtResource("1_pkkch")]
+script = ExtResource("2_le1ba")
+empty_table_message = "You have no blenders installed. Install one by clicking +Add"
+
+[node name="Title" parent="HBoxContainer" parent_id_path=PackedInt32Array(2145503069) index="0" unique_id=805680009]
+text = "Installed Blenders"
+
+[node name="Add" type="Button" parent="HBoxContainer/ActionButtonContainer" parent_id_path=PackedInt32Array(534849687) index="0" unique_id=786382862]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/icon_max_width = 24
+toggle_mode = true
+text = "Add"
+icon = ExtResource("3_2bgod")
+
+[node name="PopupPanel" type="PopupPanel" parent="HBoxContainer/ActionButtonContainer/Add" index="0" unique_id=2085981637]
+oversampling_override = 1.0
+position = Vector2i(650, 108)
+size = Vector2i(228, 74)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/ActionButtonContainer/Add/PopupPanel" index="1" unique_id=1511094947]
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 224.0
+offset_bottom = 70.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/ActionButtonContainer/Add/PopupPanel/VBoxContainer" index="0" unique_id=1246467709]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/ActionButtonContainer/Add/PopupPanel/VBoxContainer/HBoxContainer" index="0" unique_id=706410090]
+layout_mode = 2
+text = "Version"
+
+[node name="OptionButton" type="OptionButton" parent="HBoxContainer/ActionButtonContainer/Add/PopupPanel/VBoxContainer/HBoxContainer" index="1" unique_id=94285320]
+layout_mode = 2
+
+[node name="Download" type="Button" parent="HBoxContainer/ActionButtonContainer/Add/PopupPanel/VBoxContainer" index="1" unique_id=1383437213]
+layout_mode = 2
+text = "Download and Install"
+icon = ExtResource("4_b41lk")
+
+[connection signal="pressed" from="HBoxContainer/ActionButtonContainer/Add" to="." method="_on_add_pressed" flags=18]
+[connection signal="popup_hide" from="HBoxContainer/ActionButtonContainer/Add/PopupPanel" to="." method="_on_popup_panel_popup_hide"]
+[connection signal="pressed" from="HBoxContainer/ActionButtonContainer/Add/PopupPanel/VBoxContainer/Download" to="." method="_on_download_pressed"]

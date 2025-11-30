@@ -1,0 +1,152 @@
+[gd_scene load_steps=8 format=3 uid="uid://q1ny5epx0qdm"]
+
+[ext_resource type="PackedScene" uid="uid://dc53vv7auyhcu" path="res://scenes/base_classes/page.tscn" id="1_iafse"]
+[ext_resource type="PackedScene" uid="uid://bk6xta1634ajm" path="res://scenes/base_classes/project_card.tscn" id="2_3km4k"]
+[ext_resource type="Script" uid="uid://c438c47dab84u" path="res://scenes/dashboard/dashboard.gd" id="2_4jrbh"]
+[ext_resource type="PackedScene" uid="uid://bh8p8tmx7koqt" path="res://scenes/gui_elements/table.tscn" id="3_eb81t"]
+[ext_resource type="PackedScene" uid="uid://o6nf18mvcvvj" path="res://scenes/base_classes/news_card.tscn" id="4_5ihmn"]
+[ext_resource type="Script" uid="uid://bqoonhy5kvfr3" path="res://scenes/dashboard/news.gd" id="4_pq66u"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_iwa43"]
+font_size = 32
+
+[node name="Dashboard" instance=ExtResource("1_iafse")]
+script = ExtResource("2_4jrbh")
+metadata/_edit_horizontal_guides_ = [509.0, 269.0]
+metadata/_edit_vertical_guides_ = [40.0, 360.0]
+
+[node name="Title" parent="VBoxContainer/MarginContainer/VBoxContainer/Header/HBoxContainer/VBoxContainer" index="0"]
+text = "Dashboard"
+
+[node name="SubText" parent="VBoxContainer/MarginContainer/VBoxContainer/Header/HBoxContainer/VBoxContainer" index="1"]
+text = "Quickly open your recent projects, install new versions of Blender or see what's new in the community..."
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/MarginContainer/VBoxContainer/Body" index="0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer/VBoxContainer/Body/ScrollContainer" index="0"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 60
+
+[node name="Projects" type="VBoxContainer" parent="VBoxContainer/MarginContainer/VBoxContainer/Body/ScrollContainer/VBoxContainer" index="0"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer/Body/ScrollContainer/VBoxContainer/Projects" index="0"]
+layout_mode = 2
+text = "Recently Opened Projects"
+label_settings = SubResource("LabelSettings_iwa43")
+
+[node name="HFlowContainer" type="HFlowContainer" parent="VBoxContainer/MarginContainer/VBoxContainer/Body/ScrollContainer/VBoxContainer/Projects" index="1"]
+layout_mode = 2
+
+[node name="ProjectCard" parent="VBoxContainer/MarginContainer/VBoxContainer/Body/ScrollContainer/VBoxContainer/Projects/HFlowContainer" index="0" instance=ExtResource("2_3km4k")]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/MarginContainer/VBoxContainer/Body/ScrollContainer/VBoxContainer" index="1"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 60
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer/VBoxContainer/Body/ScrollContainer/VBoxContainer/HBoxContainer2" index="0"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+theme_override_constants/separation = 60
+
+[node name="InstalledBlenderProjects" type="VBoxContainer" parent="VBoxContainer/MarginContainer/VBoxContainer/Body/ScrollContainer/VBoxContainer/HBoxContainer2/VBoxContainer" index="0"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer/Body/ScrollContainer/VBoxContainer/HBoxContainer2/VBoxContainer/InstalledBlenderProjects" index="0"]
+layout_mode = 2
+text = "Installed Blender Versions"
+label_settings = SubResource("LabelSettings_iwa43")
+
+[node name="Table" parent="VBoxContainer/MarginContainer/VBoxContainer/Body/ScrollContainer/VBoxContainer/HBoxContainer2/VBoxContainer/InstalledBlenderProjects" index="1" instance=ExtResource("3_eb81t")]
+layout_mode = 2
+
+[node name="StorageUsed" type="VBoxContainer" parent="VBoxContainer/MarginContainer/VBoxContainer/Body/ScrollContainer/VBoxContainer/HBoxContainer2/VBoxContainer" index="1"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer/Body/ScrollContainer/VBoxContainer/HBoxContainer2/VBoxContainer/StorageUsed" index="0"]
+layout_mode = 2
+text = "Storage Usage"
+label_settings = SubResource("LabelSettings_iwa43")
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/MarginContainer/VBoxContainer/Body/ScrollContainer/VBoxContainer/HBoxContainer2/VBoxContainer/StorageUsed" index="1"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer/VBoxContainer/Body/ScrollContainer/VBoxContainer/HBoxContainer2/VBoxContainer/StorageUsed/PanelContainer" index="0"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer/VBoxContainer/Body/ScrollContainer/VBoxContainer/HBoxContainer2/VBoxContainer/StorageUsed/PanelContainer/MarginContainer" index="0"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer/VBoxContainer/Body/ScrollContainer/VBoxContainer/HBoxContainer2/VBoxContainer/StorageUsed/PanelContainer/MarginContainer/VBoxContainer" index="0"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer/Body/ScrollContainer/VBoxContainer/HBoxContainer2/VBoxContainer/StorageUsed/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" index="0"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Storage Used"
+
+[node name="Label2" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer/Body/ScrollContainer/VBoxContainer/HBoxContainer2/VBoxContainer/StorageUsed/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" index="1"]
+layout_mode = 2
+text = "50 %"
+
+[node name="ProgressBar" type="ProgressBar" parent="VBoxContainer/MarginContainer/VBoxContainer/Body/ScrollContainer/VBoxContainer/HBoxContainer2/VBoxContainer/StorageUsed/PanelContainer/MarginContainer/VBoxContainer" index="1"]
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+size_flags_vertical = 4
+value = 50.0
+show_percentage = false
+
+[node name="Label2" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer/Body/ScrollContainer/VBoxContainer/HBoxContainer2/VBoxContainer/StorageUsed/PanelContainer/MarginContainer/VBoxContainer" index="2"]
+layout_mode = 2
+text = "00 GB / 00 GB"
+horizontal_alignment = 2
+
+[node name="News" type="VBoxContainer" parent="VBoxContainer/MarginContainer/VBoxContainer/Body/ScrollContainer/VBoxContainer/HBoxContainer2" index="1"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("4_pq66u")
+
+[node name="Label" type="RichTextLabel" parent="VBoxContainer/MarginContainer/VBoxContainer/Body/ScrollContainer/VBoxContainer/HBoxContainer2/News" index="0"]
+layout_mode = 2
+tooltip_text = "If clicked this will open 
+https://www.blender.org/news
+in your default browser."
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "[url=]News & Updates [font_size=16](Press Releases)[/font_size][/url]"
+fit_content = true
+meta_underlined = false
+
+[node name="HFlowContainer" type="HFlowContainer" parent="VBoxContainer/MarginContainer/VBoxContainer/Body/ScrollContainer/VBoxContainer/HBoxContainer2/News" index="1"]
+layout_mode = 2
+
+[node name="NewsCard" parent="VBoxContainer/MarginContainer/VBoxContainer/Body/ScrollContainer/VBoxContainer/HBoxContainer2/News/HFlowContainer" index="0" instance=ExtResource("4_5ihmn")]
+layout_mode = 2
+
+[node name="Footer" parent="VBoxContainer" index="1"]
+visible = false
+
+[connection signal="meta_clicked" from="VBoxContainer/MarginContainer/VBoxContainer/Body/ScrollContainer/VBoxContainer/HBoxContainer2/News/Label" to="VBoxContainer/MarginContainer/VBoxContainer/Body/ScrollContainer/VBoxContainer/HBoxContainer2/News" method="_on_label_meta_clicked"]

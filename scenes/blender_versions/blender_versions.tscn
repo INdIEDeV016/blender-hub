@@ -1,0 +1,71 @@
+[gd_scene load_steps=8 format=3 uid="uid://cpq6qkufeji3o"]
+
+[ext_resource type="PackedScene" uid="uid://dc53vv7auyhcu" path="res://scenes/base_classes/page.tscn" id="1_2h35n"]
+[ext_resource type="Script" uid="uid://h7qudlp66i14" path="res://scenes/blender_versions/blender_versions.gd" id="2_we5yv"]
+[ext_resource type="PackedScene" uid="uid://b5srppurvg676" path="res://scenes/gui_elements/table_sections/custom/new_daily_builds.tscn" id="4_bkhfx"]
+[ext_resource type="PackedScene" uid="uid://88iqlpm5t42u" path="res://scenes/gui_elements/table_sections/custom/installed_blenders.tscn" id="5_3e84u"]
+[ext_resource type="Texture2D" uid="uid://dj6w528jkvxt4" path="res://assets/icons/refresh.svg" id="5_bkhfx"]
+[ext_resource type="PackedScene" uid="uid://87fyxpp28yav" path="res://scenes/gui_elements/table_sections/custom/experimental_versions.tscn" id="6_bkhfx"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_h03gf"]
+
+[node name="BlenderVersions" unique_id=2008344947 instance=ExtResource("1_2h35n")]
+script = ExtResource("2_we5yv")
+
+[node name="Header" parent="VBoxContainer/VBoxContainer" parent_id_path=PackedInt32Array(1774313199) index="0" unique_id=1312456554]
+mouse_filter = 2
+
+[node name="Title" parent="VBoxContainer/VBoxContainer/Header/HBoxContainer/VBoxContainer" parent_id_path=PackedInt32Array(1595735413) index="0" unique_id=1714985580]
+tooltip_text = "Blender Versions"
+text = "Blender Versions"
+
+[node name="SubText" parent="VBoxContainer/VBoxContainer/Header/HBoxContainer/VBoxContainer" parent_id_path=PackedInt32Array(1595735413) index="1" unique_id=349069388]
+tooltip_text = "Explore, download and manage different versions of Blender."
+text = "Explore, download and manage different versions of Blender."
+
+[node name="CheckForUpdates" type="Button" parent="VBoxContainer/VBoxContainer/Header/HBoxContainer/Tools" parent_id_path=PackedInt32Array(1540454449) index="0" unique_id=1635500262]
+layout_mode = 2
+theme_type_variation = &"AscentedButton"
+theme_override_constants/icon_max_width = 25
+theme_override_font_sizes/font_size = 20
+text = "Check For Updates"
+icon = ExtResource("5_bkhfx")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/VBoxContainer/Body" parent_id_path=PackedInt32Array(1956228554) index="0" unique_id=1392967496]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/VBoxContainer/Body/ScrollContainer" index="0" unique_id=119025221]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 40
+
+[node name="TagsContainer" type="HBoxContainer" parent="VBoxContainer/VBoxContainer/Body/ScrollContainer/VBoxContainer" index="0" unique_id=452527351]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="Button" type="Button" parent="VBoxContainer/VBoxContainer/Body/ScrollContainer/VBoxContainer/TagsContainer" index="0" unique_id=919253704]
+layout_mode = 2
+theme_type_variation = &"TagButton"
+toggle_mode = true
+button_pressed = true
+button_group = SubResource("ButtonGroup_h03gf")
+text = "All"
+
+[node name="InstalledBlenders" parent="VBoxContainer/VBoxContainer/Body/ScrollContainer/VBoxContainer" index="1" unique_id=793672817 instance=ExtResource("5_3e84u")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="NewDailyBuilds" parent="VBoxContainer/VBoxContainer/Body/ScrollContainer/VBoxContainer" index="2" unique_id=116823883 instance=ExtResource("4_bkhfx")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="ExperimentalVersions" parent="VBoxContainer/VBoxContainer/Body/ScrollContainer/VBoxContainer" index="3" unique_id=1920442262 instance=ExtResource("6_bkhfx")]
+unique_name_in_owner = true
+layout_mode = 2

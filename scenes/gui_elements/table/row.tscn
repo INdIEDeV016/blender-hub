@@ -1,0 +1,83 @@
+[gd_scene load_steps=6 format=3 uid="uid://bfwvgukbo43ng"]
+
+[ext_resource type="Script" uid="uid://d01yeg5g1t6n0" path="res://scenes/gui_elements/table/row.gd" id="1_w0w7j"]
+[ext_resource type="PackedScene" uid="uid://diehf3o82f5sf" path="res://scenes/gui_elements/table/type_label.tscn" id="2_7dsbr"]
+[ext_resource type="Texture2D" uid="uid://daru0bemthkl2" path="res://assets/icons/trash.svg" id="3_ku41t"]
+[ext_resource type="Texture2D" uid="uid://d1kion46746ol" path="res://assets/icons/download.svg" id="4_x42ro"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x42ro"]
+content_margin_left = 15.0
+content_margin_top = 5.0
+content_margin_right = 15.0
+content_margin_bottom = 5.0
+bg_color = Color(0.357, 0.573, 0.137, 0.3)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[node name="Row" type="PanelContainer" unique_id=680211746]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 54.0
+grow_horizontal = 2
+theme_type_variation = &"TableRow"
+script = ExtResource("1_w0w7j")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1211086058]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Version" type="Label" parent="HBoxContainer" unique_id=1770411197]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Blender x.x.x"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Date" type="Label" parent="HBoxContainer" unique_id=1171229162]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+text = "Release Date"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Type" parent="HBoxContainer" unique_id=635785960 instance=ExtResource("2_7dsbr")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_stretch_ratio = 1.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_x42ro")
+horizontal_alignment = 1
+
+[node name="Buttons" type="HBoxContainer" parent="HBoxContainer" unique_id=796439152]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+alignment = 1
+
+[node name="Install" type="Button" parent="HBoxContainer/Buttons" unique_id=2016202545]
+layout_mode = 2
+theme_type_variation = &"AscentedButton"
+text = "Install"
+
+[node name="Open" type="Button" parent="HBoxContainer/Buttons" unique_id=1489553240]
+layout_mode = 2
+text = "Open"
+
+[node name="Update" type="Button" parent="HBoxContainer/Buttons" unique_id=1898768877]
+layout_mode = 2
+theme_type_variation = &"AscentedButton"
+icon = ExtResource("4_x42ro")
+
+[node name="Uninstall" type="Button" parent="HBoxContainer/Buttons" unique_id=346840817]
+layout_mode = 2
+icon = ExtResource("3_ku41t")
+
+[connection signal="pressed" from="HBoxContainer/Buttons/Install" to="." method="_on_action_button_pressed" flags=18]
+[connection signal="pressed" from="HBoxContainer/Buttons/Open" to="." method="_on_action_button_pressed" flags=18]
+[connection signal="pressed" from="HBoxContainer/Buttons/Update" to="." method="_on_action_button_pressed" flags=18]
+[connection signal="pressed" from="HBoxContainer/Buttons/Uninstall" to="." method="_on_action_button_pressed" flags=18]

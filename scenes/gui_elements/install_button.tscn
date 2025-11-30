@@ -1,0 +1,70 @@
+[gd_scene load_steps=4 format=3 uid="uid://bc1lvi6pjoa5q"]
+
+[ext_resource type="Script" uid="uid://dh8n82fh4eve" path="res://scenes/gui_elements/install_button.gd" id="2_nmvqo"]
+[ext_resource type="Texture2D" uid="uid://duj35y0yr5rry" path="res://assets/circular_progress.svg" id="2_ubb53"]
+[ext_resource type="Texture2D" uid="uid://5pdj7cr2vi0c" path="res://assets/icons/disc.svg" id="3_nmvqo"]
+
+[node name="InstallButton" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 80.0
+offset_bottom = 80.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("2_nmvqo")
+
+[node name="Circle" type="TextureRect" parent="."]
+clip_children = 1
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_nmvqo")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Button" type="Button" parent="Circle"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -45.5
+offset_top = -24.0
+offset_right = 45.5
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.5
+theme_type_variation = &"AscentedButton"
+text = "Install"
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="Circle"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -25.0
+offset_right = 25.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+value = 100.0
+fill_mode = 4
+radial_initial_angle = 185.60092
+radial_fill_degrees = 135.0
+nine_patch_stretch = true
+texture_under = ExtResource("2_ubb53")
+texture_progress = ExtResource("2_ubb53")
+tint_progress = Color(0.09803922, 0.43137255, 0.8980392, 1)

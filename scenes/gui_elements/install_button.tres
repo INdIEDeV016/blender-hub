@@ -1,0 +1,59 @@
+[gd_resource type="VisualShader" load_steps=10 format=3 uid="uid://bttrn0kst0hdj"]
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_ohdun"]
+parameter_name = "inner_ring"
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_ohdun"]
+output_port_for_preview = 0
+input_name = "uv"
+
+[sub_resource type="VisualShaderNodeVectorLen" id="VisualShaderNodeVectorLen_6xyw3"]
+default_input_values = [0, Vector2(0, 0)]
+op_type = 0
+
+[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_4582d"]
+default_input_values = [0, Vector2(0, 0), 1, Vector2(0.5, 0.5)]
+op_type = 0
+operator = 1
+
+[sub_resource type="VisualShaderNodeCompare" id="VisualShaderNodeCompare_afogk"]
+default_input_values = [0, 0.0, 1, 0.3850000000093132, 2, 1e-05]
+function = 2
+
+[sub_resource type="VisualShaderNodeCompare" id="VisualShaderNodeCompare_kejlo"]
+default_input_values = [0, 0.0, 1, 0.45500000000174623, 2, 1e-05]
+function = 4
+
+[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_4vwhr"]
+operator = 2
+
+[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_j5yaa"]
+default_input_values = [0, Vector2(0, 0), 1, Vector2(1.765, 1)]
+op_type = 0
+operator = 2
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_rpaf2"]
+parameter_name = "outer_ring"
+
+[resource]
+mode = 1
+flags/light_only = false
+nodes/fragment/2/node = SubResource("VisualShaderNodeInput_ohdun")
+nodes/fragment/2/position = Vector2(-1760, 200)
+nodes/fragment/3/node = SubResource("VisualShaderNodeVectorLen_6xyw3")
+nodes/fragment/3/position = Vector2(-500, 180)
+nodes/fragment/4/node = SubResource("VisualShaderNodeVectorOp_4582d")
+nodes/fragment/4/position = Vector2(-1238.8007, 208.05255)
+nodes/fragment/5/node = SubResource("VisualShaderNodeCompare_afogk")
+nodes/fragment/5/position = Vector2(-230.03098, 483.01056)
+nodes/fragment/6/node = SubResource("VisualShaderNodeCompare_kejlo")
+nodes/fragment/6/position = Vector2(-233.4431, 187.6188)
+nodes/fragment/7/node = SubResource("VisualShaderNodeFloatOp_4vwhr")
+nodes/fragment/7/position = Vector2(77.89672, 337.41263)
+nodes/fragment/8/node = SubResource("VisualShaderNodeVectorOp_j5yaa")
+nodes/fragment/8/position = Vector2(-952.7634, 208.57178)
+nodes/fragment/9/node = SubResource("VisualShaderNodeFloatParameter_rpaf2")
+nodes/fragment/9/position = Vector2(-680, 440)
+nodes/fragment/10/node = SubResource("VisualShaderNodeFloatParameter_ohdun")
+nodes/fragment/10/position = Vector2(-680, 740)
+nodes/fragment/connections = PackedInt32Array(2, 0, 4, 0, 3, 0, 5, 0, 3, 0, 6, 0, 4, 0, 8, 0, 8, 0, 3, 0, 6, 0, 7, 0, 5, 0, 7, 1, 9, 0, 6, 1, 10, 0, 5, 1)

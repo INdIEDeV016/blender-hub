@@ -1,0 +1,8 @@
+<html>
+<body>
+<ul>
+<li> asdasdasd <a href="somewhere">link</a> asdasdasd </li>
+<empty/>
+</ul>
+</body>
+</html>

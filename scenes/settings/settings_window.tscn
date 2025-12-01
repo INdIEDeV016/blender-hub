@@ -1,15 +1,15 @@
 [gd_scene load_steps=17 format=3 uid="uid://dhpmb0y01wbj6"]
 
-[ext_resource type="FontFile" uid="uid://m73h2rcpj4j1" path="res://assets/fonts/Inter.woff2" id="1_26ncd"]
 [ext_resource type="PackedScene" uid="uid://ccssbfj7xoye7" path="res://scenes/base_classes/window.tscn" id="1_vu5fi"]
 [ext_resource type="Script" uid="uid://dybxexcv7kjgu" path="res://scenes/settings/settings_window.gd" id="2_qio8b"]
+[ext_resource type="FontFile" uid="uid://dua5ebo0y1m30" path="res://assets/fonts/OpenRunde-1.0.1/desktop/OpenRunde-Bold.otf" id="3_qio8b"]
 [ext_resource type="PackedScene" uid="uid://c7luvh3c462y8" path="res://scenes/gui_elements/h_tabs.tscn" id="4_v1hle"]
 [ext_resource type="PackedScene" uid="uid://2xbxca5boov3" path="res://scenes/gui_elements/field/field_option/field_option.tscn" id="5_lxbbw"]
 [ext_resource type="PackedScene" uid="uid://btddcifvnv2c8" path="res://scenes/gui_elements/field/field_text.tscn" id="6_2fxar"]
 [ext_resource type="Script" uid="uid://bsgb4p2m4361h" path="res://scenes/gui_elements/field/field_option/option_item.gd" id="6_qio8b"]
 
 [sub_resource type="FontVariation" id="FontVariation_6ni5k"]
-base_font = ExtResource("1_26ncd")
+base_font = ExtResource("3_qio8b")
 variation_opentype = {
 1869640570: 20,
 2003265652: 700

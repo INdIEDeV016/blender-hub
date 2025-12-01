@@ -1,6 +1,7 @@
-[gd_resource type="Theme" load_steps=49 format=3 uid="uid://cpe6trr6ccjm3"]
+[gd_resource type="Theme" load_steps=50 format=3 uid="uid://cpe6trr6ccjm3"]
 
 [ext_resource type="FontFile" uid="uid://m73h2rcpj4j1" path="res://assets/fonts/Inter.woff2" id="1_txhnx"]
+[ext_resource type="FontFile" uid="uid://c78tbajr058ru" path="res://assets/fonts/OpenRunde-1.0.1/desktop/OpenRunde-Semibold.otf" id="2_jxsie"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cavym"]
 content_margin_left = 14.0
@@ -408,7 +409,7 @@ border_width_bottom = 1
 border_color = Color(0.12941177, 0.14901961, 0.1764706, 1)
 
 [sub_resource type="FontVariation" id="FontVariation_g67tg"]
-base_font = ExtResource("1_txhnx")
+base_font = ExtResource("2_jxsie")
 variation_opentype = {
 1869640570: 14,
 2003265652: 600

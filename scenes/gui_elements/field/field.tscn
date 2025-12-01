@@ -1,17 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://4tp7n48kgmc3"]
+[gd_scene load_steps=3 format=3 uid="uid://4tp7n48kgmc3"]
 
 [ext_resource type="Script" uid="uid://g5g5alpey2x5" path="res://scenes/gui_elements/field/field.gd" id="1_1foai"]
-[ext_resource type="FontFile" uid="uid://m73h2rcpj4j1" path="res://assets/fonts/Inter.woff2" id="1_hm0bw"]
-
-[sub_resource type="FontVariation" id="FontVariation_vu5fi"]
-base_font = ExtResource("1_hm0bw")
-variation_opentype = {
-1869640570: 14,
-2003265652: 400
-}
 
 [sub_resource type="LabelSettings" id="LabelSettings_vghtj"]
-font = SubResource("FontVariation_vu5fi")
 font_color = Color(0.54509807, 0.5803922, 0.61960787, 1)
 
 [node name="Field" type="HFlowContainer" unique_id=1524644762]

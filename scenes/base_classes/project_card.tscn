@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://bk6xta1634ajm"]
 
 [ext_resource type="Script" uid="uid://ca753lvn7jrup" path="res://scenes/base_classes/project_card.gd" id="1_q5llp"]
-[ext_resource type="FontFile" uid="uid://vdth0soj1fxh" path="res://assets/fonts/Inter/Inter-VariableFont_opsz,wght.ttf" id="3_q3kdc"]
+[ext_resource type="FontFile" uid="uid://bvx5p0ddw5w2g" path="res://assets/fonts/OpenRunde-1.0.1/desktop/OpenRunde-Medium.otf" id="3_q3kdc"]
 [ext_resource type="Texture2D" uid="uid://810njfn0ta7v" path="res://assets/icons/image.svg" id="4_c1lqu"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iwa43"]

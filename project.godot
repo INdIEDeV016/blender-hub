@@ -29,6 +29,7 @@ Reference="*uid://b4sjmxj2hcdm8"
 [display]
 
 window/subwindows/embed_subwindows=false
+window/per_pixel_transparency/allowed=true
 
 [editor]
 
@@ -51,7 +52,7 @@ folder_colors={
 [gui]
 
 theme/default_font_multichannel_signed_distance_field=true
-theme/custom="uid://eo7v7pngpuf1"
+theme/custom="uid://cu5bt6212mi5h"
 
 [rendering]
 

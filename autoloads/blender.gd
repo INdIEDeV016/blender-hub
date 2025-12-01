@@ -40,7 +40,7 @@ func query_blender_data(blender_exec_file: String) -> BlenderData:
 	#print_debug(JSON.stringify(build_data, "\t", false))
 
 	blender.branch = build_data.build_branch
-	blender.hash = build_data.build_hash
+	blender.build_hash = build_data.build_hash
 	blender.timestamp = build_data.build_date + "T" + build_data.build_time + "+00:00"
 	blender.installation_path = blender_exec_file.get_base_dir()
 	blender.os = build_data.build_platform
@@ -96,7 +96,7 @@ func get_daily_builds() -> Array[BlenderData]:
 		var item: = xml.get_children_of_node(offset)
 		blender.version = item.children[0].text.replace("Blender ", "")
 		blender.source = (item.children[0].attributes.href as String).strip_edges()
-		blender.hash = (item.children[2].text as String).strip_edges()
+		blender.build_hash = (item.children[2].text as String).strip_edges()
 		blender.timestamp = item.children[4].attributes.title
 		blender.stability = BlenderData.get_stability_from_string(item.children[1].text)
 		blender.size = item.children[6].children[0].attributes.title.replace("Download ", "").replace("(", "").replace(")", "")

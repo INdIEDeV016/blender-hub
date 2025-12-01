@@ -18,7 +18,7 @@ var timestamp: = ""
 var size: = ""
 var stability: Stability = Stability.STABLE
 var branch: = ""
-var hash: = ""
+var build_hash: = ""
 var source: = ""
 var installation_path: = ""
 var os: = ""
@@ -43,7 +43,7 @@ func _to_string() -> String:
 	version,
 	get_enum_string(&"Stability", stability),
 	branch,
-	hash,
+	build_hash,
 	size,
 	timestamp, get_friendly_timestamp(),
 	source,

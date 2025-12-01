@@ -1,16 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://2xbxca5boov3"]
+[gd_scene load_steps=4 format=3 uid="uid://2xbxca5boov3"]
 
 [ext_resource type="PackedScene" uid="uid://4tp7n48kgmc3" path="res://scenes/gui_elements/field/field.tscn" id="1_feppl"]
-[ext_resource type="Script" uid="uid://bsra62suujrg1" path="res://scenes/gui_elements/field/field_option.gd" id="2_s5nrb"]
+[ext_resource type="Script" uid="uid://bsra62suujrg1" path="res://scenes/gui_elements/field/field_option/field_option.gd" id="2_s5nrb"]
+[ext_resource type="Script" uid="uid://bsgb4p2m4361h" path="res://scenes/gui_elements/field/field_option/option_item.gd" id="3_g2qxa"]
 
 [node name="FieldOption" unique_id=1524644762 instance=ExtResource("1_feppl")]
 offset_right = 358.0
 offset_bottom = 40.0
 script = ExtResource("2_s5nrb")
-options = Array[Dictionary]([])
+options = Array[ExtResource("3_g2qxa")]([])
+selection = -1
 label = "Field Option"
-value = Array[Dictionary]([])
-save_now = null
 
 [node name="Label" parent="." index="0" unique_id=106732588]
 text = "Field Option"

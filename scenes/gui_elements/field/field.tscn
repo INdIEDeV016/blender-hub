@@ -27,3 +27,4 @@ size_flags_vertical = 1
 text = "Field"
 label_settings = SubResource("LabelSettings_vghtj")
 vertical_alignment = 1
+text_overrun_behavior = 1

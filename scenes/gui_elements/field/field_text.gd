@@ -19,6 +19,12 @@ enum Type {
 		match type:
 			Type.FILE, Type.FOLDER:
 				%SelectButton.show()
+@export var text: String:
+	set(new):
+		text = new
+		if not is_node_ready():
+			await ready
+		%LineEdit.text = new
 @export var placeholder_text: String:
 	set(new):
 		placeholder_text = new
@@ -27,29 +33,36 @@ enum Type {
 		%LineEdit.placeholder_text = new
 
 
-func set_value(new: Variant) -> void:
-	super(new)
-	if not is_node_ready():
-		await ready
+func _ready() -> void:
+	super()
+	%Error.hide()
+	%Error.text = ""
 
-	if %LineEdit.text != str(new):
-		%LineEdit.text = str(new)
 
 func get_value():
-	var new_value = %LineEdit.text
-	value = %LineEdit.text
-	return new_value
+	return %LineEdit.text
+
+
+func set_value(new):
+	if new is String:
+		%LineEdit.text = new
 
 
 func _on_field_value_changed(new_value: String) -> void:
+	if not is_node_ready():
+		%Error.text = ""
 	if not new_value.is_empty():
 		match type:
 			Type.NUMBERS:
 				if not new_value.is_valid_float():
-					return
+					%Error.text = "Not a valid number!"
 			Type.URL:
 				if not Helper.is_valid_url(new_value):
-					return
+					%Error.text = "Not a valid URL!"
+
+	if not %Error.text.is_empty():
+		%Error.show()
+		return
 
 	super(new_value)
 

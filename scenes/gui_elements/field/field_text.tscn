@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://btddcifvnv2c8"]
+[gd_scene load_steps=5 format=3 uid="uid://btddcifvnv2c8"]
 
 [ext_resource type="PackedScene" uid="uid://4tp7n48kgmc3" path="res://scenes/gui_elements/field/field.tscn" id="1_laaj8"]
 [ext_resource type="Script" uid="uid://br7ans7ijffns" path="res://scenes/gui_elements/field/field_text.gd" id="2_kfh7u"]
 [ext_resource type="Texture2D" uid="uid://ckf8qscj3rpks" path="res://assets/icons/folder.svg" id="3_agfv0"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_agfv0"]
+font_color = Color(0.937, 0.329, 0.329, 1)
 
 [node name="FieldText" unique_id=2075972840 instance=ExtResource("1_laaj8")]
 anchors_preset = 10
@@ -11,37 +14,48 @@ offset_bottom = 40.0
 grow_horizontal = 2
 script = ExtResource("2_kfh7u")
 type = 0
+text = ""
 placeholder_text = ""
 label = "Field Text"
-value = ""
 
 [node name="Label" parent="." index="0" unique_id=106732588]
 text = "Field Text"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="." index="1" unique_id=569545644]
+[node name="VBoxContainer" type="VBoxContainer" parent="." index="1" unique_id=484838418]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="LineEdit" type="LineEdit" parent="HBoxContainer" index="0" unique_id=583695500]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" index="0" unique_id=569545644]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="LineEdit" type="LineEdit" parent="VBoxContainer/HBoxContainer" index="0" unique_id=583695500]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(208, 40)
 layout_mode = 2
 size_flags_horizontal = 3
 focus_behavior_recursive = 2
 
-[node name="SelectButton" type="Button" parent="HBoxContainer" index="1" unique_id=74036934]
+[node name="SelectButton" type="Button" parent="VBoxContainer/HBoxContainer" index="1" unique_id=74036934]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
 icon = ExtResource("3_agfv0")
+
+[node name="Error" type="Label" parent="VBoxContainer" index="1" unique_id=1533966950]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+text = "Error"
+label_settings = SubResource("LabelSettings_agfv0")
 
 [node name="Select" type="FileDialog" parent="." index="2" unique_id=1347126770]
 unique_name_in_owner = true
 access = 2
 use_native_dialog = true
 
-[connection signal="text_changed" from="HBoxContainer/LineEdit" to="." method="_on_field_value_changed"]
-[connection signal="text_submitted" from="HBoxContainer/LineEdit" to="." method="_on_field_value_changed"]
-[connection signal="pressed" from="HBoxContainer/SelectButton" to="." method="_on_select_button_pressed"]
+[connection signal="text_changed" from="VBoxContainer/HBoxContainer/LineEdit" to="." method="_on_field_value_changed"]
+[connection signal="text_submitted" from="VBoxContainer/HBoxContainer/LineEdit" to="." method="_on_field_value_changed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/SelectButton" to="." method="_on_select_button_pressed"]
 [connection signal="dir_selected" from="Select" to="." method="_on_select_file_selected"]
 [connection signal="file_selected" from="Select" to="." method="_on_select_file_selected"]

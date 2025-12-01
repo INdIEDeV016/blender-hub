@@ -13,7 +13,7 @@ func _ready() -> void:
 	button_group.pressed.connect(_on_tab_clicked)
 	%App/Name.text = ProjectSettings.get_setting("application/config/name")
 	%App/Icon.texture = load(ProjectSettings.get_setting("application/config/icon"))
-	set_app_theme(Settings.get_setting("Themes", "app_theme", "System Default")[1])
+	set_app_theme(Settings.get_setting("Themes", "app_theme", "System Default").text)
 
 	#TODO
 	add_tab("Projects", "Projects (Coming Soon)", preload("res://assets/icons/project.svg"), -1, "Projects").disabled = true
@@ -55,18 +55,18 @@ func _on_tab_clicked(button: BaseButton) -> void:
 func set_app_theme(theme_name: StringName) -> void:
 	var app_theme: Theme
 	if not theme_name == "System Default":
-		app_theme = load("res://assets/themes/%s.theme" % theme_name.to_snake_case())
+		app_theme = load("res://assets/themes/%s.tres" % theme_name.to_snake_case())
 	elif DisplayServer.is_dark_mode():
-		app_theme = load("res://assets/themes/default_dark.theme")
+		app_theme = load("res://assets/themes/default_dark.tres")
 	else:
-		app_theme = load("res://assets/themes/default_light.theme")
+		app_theme = load("res://assets/themes/default_light.tres")
 
-	get_tree().current_scene.theme = app_theme
+	theme = app_theme
 
 
 func _on_settings_change(section: StringName, key: StringName, value) -> void:
 	if section == "Themes" and key == "app_theme":
-		set_app_theme(value[1])
+		set_app_theme(value.text)
 
 
 func _on_h_split_container_dragged(_offset: int) -> void:

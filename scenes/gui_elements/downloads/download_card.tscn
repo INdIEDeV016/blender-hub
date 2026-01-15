@@ -45,6 +45,7 @@ text_overrun_behavior = 3
 
 [node name="Status" type="Label" parent="VBoxContainer" unique_id=720988523]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 text = "STATUS"
 label_settings = SubResource("LabelSettings_om3kc")
@@ -84,6 +85,7 @@ horizontal_alignment = 2
 
 [node name="Error" type="Label" parent="VBoxContainer" unique_id=1734699799]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 text = "An error occured"

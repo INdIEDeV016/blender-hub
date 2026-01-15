@@ -76,7 +76,7 @@ func _process(_delta: float) -> void:
 
 
 func download(url: String, headers: = PackedStringArray()) -> Dictionary:
-	retry_function = download.bind(url)
+	retry_function = download.bind(url, headers)
 	cancel_function = func cancel_request():
 		if http.get_http_client_status() != HTTPClient.STATUS_BODY:
 			queue_free()
@@ -141,7 +141,7 @@ func download(url: String, headers: = PackedStringArray()) -> Dictionary:
 	return dict
 
 
-func install(_download_file: String, installation_path: String) -> Error:
+func install(_download_file: = download_file, installation_path: = installation_location) -> Error:
 	download_file = _download_file
 	installation_location = installation_path
 	download_file = ProjectSettings.globalize_path(download_file)
@@ -152,23 +152,23 @@ func install(_download_file: String, installation_path: String) -> Error:
 	%Retry.hide()
 	%Cancel.hide()
 
-	var async: = Async.new()
-	add_child(async)
-	var output: PackedStringArray = await async.execute("wmic process where name='blender.exe' get ProcessId,ExecutablePath")
-	#print_debug(output)
-	async.queue_free()
+	var output: = await Blender.check_running_blenders()
 
 	if output.size() > 0:
-		status_update.emit(Status.INSTALL_PAUSED)
-		output.remove_at(0)
-		for line in output:
-			var running_blender: = line.substr(0, line.length() - "ProcessID  ".length()).strip_edges().get_base_dir().replace("\\", "/")
-
-			if running_blender == installation_path:
-				%Status.text = "Installation Paused:\nPlease close Blender before installing."
-				push_warning(%Status.text)
-				%Retry.show()
-				return ERR_FILE_ALREADY_IN_USE
+		var setting: String = Settings.get_setting("Downloads", "kill_blender").text
+		match setting:
+			#"Ask":
+				#var dialog: = ((get_tree().current_scene.side_bar as SideBar).get_node("KillBlenderDialog") as ConfirmationDialog)
+				#dialog.popup_centered()
+				#await dialog.confirmed
+			"Don't Install and Wait", _:
+				status_update.emit(Status.INSTALL_PAUSED)
+				for blender in output.values():
+					if blender.installation_path == installation_path:
+						%Status.text = "Installation Paused:\nPlease close Blender before installing."
+						push_warning(%Status.text)
+						%Retry.show()
+						return ERR_FILE_ALREADY_IN_USE
 
 	FileAccess.open(download_file, FileAccess.READ)
 	var err: = FileAccess.get_open_error()

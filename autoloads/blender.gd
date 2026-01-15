@@ -6,16 +6,28 @@ var installed_blenders: Array[BlenderData] = []
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass
-	#check_running_blenders()
+	#print_debug(await check_running_blenders())
 
 
-func check_running_blenders() -> PackedStringArray:
-	var blenders: = PackedStringArray()
+func check_running_blenders() -> Dictionary[int, BlenderData]:
+	var blenders: Dictionary[int, BlenderData] = {}
 
-	var output: = []
-	var err: = OS.execute("CMD.exe", ["/C", "wmic process where name='blender.exe' get ProcessID,ExecutablePath"], output)
-	if err != -1:
-		print(output)
+	var async: = Async.new()
+	add_child(async)
+	var output: PackedStringArray = await async.execute("wmic process where name='blender.exe' get ProcessId,ExecutablePath")
+	#print_debug(output)
+	async.queue_free()
+
+	if output.size() > 0:
+		var header: = output[0]
+		var total_length: = header.length()
+		var process_id_length: = "  ProcessID  ".length()
+		var executable_path_size: = total_length - process_id_length
+		#print_debug(executable_path_size, " + ", process_id_length, " = ", total_length)
+		output.remove_at(0)
+		for line in output:
+			blenders[line.substr(executable_path_size, process_id_length).to_int()] = query_blender_data(line.substr(0, executable_path_size))
+			#print_debug([line.substr(0, executable_path_size), line.substr(executable_path_size, process_id_length).to_int()])
 
 	return blenders
 
@@ -24,7 +36,7 @@ func query_blender_data(blender_exec_file: String) -> BlenderData:
 	var blender: = BlenderData.new()
 
 	var output = []
-	OS.execute(blender_exec_file, ["-v"], output)
+	OS.execute(blender_exec_file.replace("/", "\\"), ["-v"], output)
 	output = output[0]
 
 	var lines: = (output as String).remove_chars("\t").split("\r\n")

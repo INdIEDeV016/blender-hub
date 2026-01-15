@@ -31,7 +31,7 @@ func _to_string() -> String:
 		Version           : %s
 		Statbility        : %s
 		Branch            : %s
-		Hash              : %s
+		Build Hash        : %s
 		Size              : %s
 		Timestamp         : %s (%s)
 		Source            : %s

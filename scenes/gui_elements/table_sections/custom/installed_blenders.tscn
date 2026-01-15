@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://88iqlpm5t42u"]
+[gd_scene format=3 uid="uid://88iqlpm5t42u"]
 
 [ext_resource type="PackedScene" uid="uid://d4mdbuc23wo7u" path="res://scenes/gui_elements/table_sections/table_section.tscn" id="1_pkkch"]
 [ext_resource type="Script" uid="uid://0ftq4twcha0y" path="res://scenes/gui_elements/table_sections/custom/installed_blenders.gd" id="2_le1ba"]
@@ -15,7 +15,6 @@ text = "Installed Blenders"
 [node name="Add" type="Button" parent="HBoxContainer/ActionButtonContainer" parent_id_path=PackedInt32Array(534849687) index="0" unique_id=786382862]
 layout_mode = 2
 size_flags_vertical = 4
-theme_override_constants/icon_max_width = 24
 toggle_mode = true
 text = "Add"
 icon = ExtResource("3_2bgod")
@@ -26,10 +25,10 @@ position = Vector2i(650, 108)
 size = Vector2i(228, 74)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/ActionButtonContainer/Add/PopupPanel" index="1" unique_id=1511094947]
-offset_left = 4.0
-offset_top = 4.0
-offset_right = 224.0
-offset_bottom = 70.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 218.0
+offset_bottom = 90.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/ActionButtonContainer/Add/PopupPanel/VBoxContainer" index="0" unique_id=1246467709]
 layout_mode = 2

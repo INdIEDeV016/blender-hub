@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bgcxwniiv25x7"]
+[gd_scene format=3 uid="uid://bgcxwniiv25x7"]
 
 [ext_resource type="Theme" uid="uid://cu5bt6212mi5h" path="res://assets/themes/default_dark.tres" id="1_272bh"]
 [ext_resource type="Script" uid="uid://bm1mlcl837ta" path="res://scenes/main.gd" id="1_ig7tw"]
@@ -12,6 +12,13 @@
 [ext_resource type="PackedScene" uid="uid://dhpmb0y01wbj6" path="res://scenes/settings/settings_window.tscn" id="8_5vw27"]
 [ext_resource type="Texture2D" uid="uid://dydfcjlabju2" path="res://assets/icons/blender.svg" id="8_ya4ey"]
 [ext_resource type="PackedScene" uid="uid://lmxefmhu0o4" path="res://scenes/gui_elements/notification_toast.tscn" id="10_4c57u"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_eb6dy"]
+color = Color(0.12941177, 0.14901961, 0.1764706, 1)
+grow_begin = -300.0
+grow_end = -300.0
+thickness = 5
+vertical = true
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h2yge"]
 content_margin_left = 10.0
@@ -48,6 +55,15 @@ texture = ExtResource("4_1bvp3")
 expand_mode = 3
 stretch_mode = 5
 
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1904435565]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.050980393, 0.06666667, 0.09019608, 1)
+
 [node name="HSplitContainer" type="HSplitContainer" parent="." unique_id=212397156]
 unique_name_in_owner = true
 layout_mode = 1
@@ -57,6 +73,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 0
+theme_override_styles/split_bar_background = SubResource("StyleBoxLine_eb6dy")
 split_offsets = PackedInt32Array(95)
 split_offset = 95
 

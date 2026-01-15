@@ -1,18 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://d4mdbuc23wo7u"]
+[gd_scene format=3 uid="uid://d4mdbuc23wo7u"]
 
 [ext_resource type="Script" uid="uid://drko3m8n1wkyp" path="res://scenes/gui_elements/table_sections/table_section.gd" id="1_u8wdq"]
 [ext_resource type="Texture2D" uid="uid://dj6w528jkvxt4" path="res://assets/icons/refresh.svg" id="2_1rasb"]
 [ext_resource type="PackedScene" uid="uid://bh8p8tmx7koqt" path="res://scenes/gui_elements/table/table.tscn" id="3_krco6"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_krco6"]
-font_size = 22
 
 [node name="TableSection" type="VBoxContainer" unique_id=116823883]
 anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 31.0
 grow_horizontal = 2
-theme_override_constants/separation = 20
+theme_type_variation = &"TableSectionVBox"
 script = ExtResource("1_u8wdq")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=2145503069]
@@ -23,8 +20,8 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
+theme_type_variation = &"TableSectionTitle"
 text = "Table Section"
-label_settings = SubResource("LabelSettings_krco6")
 vertical_alignment = 1
 
 [node name="ActionButtonContainer" type="HBoxContainer" parent="HBoxContainer" unique_id=534849687]
@@ -35,7 +32,6 @@ size_flags_horizontal = 10
 [node name="Refresh" type="Button" parent="HBoxContainer/ActionButtonContainer" unique_id=1341825959]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/icon_max_width = 24
 icon = ExtResource("2_1rasb")
 
 [node name="Table" parent="." unique_id=410873373 instance=ExtResource("3_krco6")]

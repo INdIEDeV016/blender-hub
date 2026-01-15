@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://q1ny5epx0qdm"]
+[gd_scene format=3 uid="uid://q1ny5epx0qdm"]
 
 [ext_resource type="PackedScene" uid="uid://dc53vv7auyhcu" path="res://scenes/base_classes/page.tscn" id="1_iafse"]
 [ext_resource type="PackedScene" uid="uid://bk6xta1634ajm" path="res://scenes/base_classes/project_card.tscn" id="2_3km4k"]
@@ -40,7 +40,7 @@ script = ExtResource("2_4jrbh")
 tooltip_text = "Dashboard"
 text = "Dashboard"
 
-[node name="SubText" parent="VBoxContainer/VBoxContainer/Header/HBoxContainer/VBoxContainer" parent_id_path=PackedInt32Array(1595735413) index="1" unique_id=349069388]
+[node name="SubTitle" parent="VBoxContainer/VBoxContainer/Header/HBoxContainer/VBoxContainer" parent_id_path=PackedInt32Array(1595735413) index="1" unique_id=349069388]
 tooltip_text = "Quickly open your recent projects, install new versions of Blender or see what's new in the community."
 text = "Quickly open your recent projects, install new versions of Blender or see what's new in the community."
 
@@ -83,10 +83,12 @@ theme_override_constants/separation = 60
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.0
-theme_override_constants/separation = 60
+theme_override_constants/separation = 30
 
 [node name="InstalledBlenders" parent="VBoxContainer/VBoxContainer/Body/ScrollContainer/VBoxContainer/HBoxContainer2/VBoxContainer" index="0" unique_id=116823883 instance=ExtResource("4_7agwo")]
 layout_mode = 2
+theme_type_variation = &""
+theme_override_constants/separation = 20
 
 [node name="StorageUsed" type="VBoxContainer" parent="VBoxContainer/VBoxContainer/Body/ScrollContainer/VBoxContainer/HBoxContainer2/VBoxContainer" index="1" unique_id=1547531269]
 layout_mode = 2
@@ -107,7 +109,6 @@ label_settings = SubResource("LabelSettings_iwa43")
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 10
-theme_override_constants/icon_max_width = 24
 icon = ExtResource("7_qmip6")
 
 [node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/VBoxContainer/Body/ScrollContainer/VBoxContainer/HBoxContainer2/VBoxContainer/StorageUsed" index="1" unique_id=2053895057]
@@ -142,10 +143,11 @@ show_percentage = false
 
 [node name="StoragePercentage" type="Label" parent="VBoxContainer/VBoxContainer/Body/ScrollContainer/VBoxContainer/HBoxContainer2/VBoxContainer/StorageUsed/PanelContainer/MarginContainer/HBoxContainer" index="2" unique_id=756795112]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(100, 0)
+custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 size_flags_vertical = 1
 text = "50 %"
+horizontal_alignment = 3
 vertical_alignment = 1
 
 [node name="StorageAmount" type="Label" parent="VBoxContainer/VBoxContainer/Body/ScrollContainer/VBoxContainer/HBoxContainer2/VBoxContainer/StorageUsed/PanelContainer/MarginContainer/HBoxContainer" index="3" unique_id=1260721887]
@@ -168,7 +170,6 @@ layout_mode = 2
 tooltip_text = "If clicked this will open 
 https://www.blender.org/news
 in your default browser."
-theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
 text = "[url=https://www.blender.org/news/]News & Updates[/url]"
 fit_content = true

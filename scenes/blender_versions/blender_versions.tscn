@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cpq6qkufeji3o"]
+[gd_scene format=3 uid="uid://cpq6qkufeji3o"]
 
 [ext_resource type="PackedScene" uid="uid://dc53vv7auyhcu" path="res://scenes/base_classes/page.tscn" id="1_2h35n"]
 [ext_resource type="Script" uid="uid://h7qudlp66i14" path="res://scenes/blender_versions/blender_versions.gd" id="2_we5yv"]
@@ -19,7 +19,7 @@ mouse_filter = 2
 tooltip_text = "Blender Versions"
 text = "Blender Versions"
 
-[node name="SubText" parent="VBoxContainer/VBoxContainer/Header/HBoxContainer/VBoxContainer" parent_id_path=PackedInt32Array(1595735413) index="1" unique_id=349069388]
+[node name="SubTitle" parent="VBoxContainer/VBoxContainer/Header/HBoxContainer/VBoxContainer" parent_id_path=PackedInt32Array(1595735413) index="1" unique_id=349069388]
 tooltip_text = "Explore, download and manage different versions of Blender."
 text = "Explore, download and manage different versions of Blender."
 

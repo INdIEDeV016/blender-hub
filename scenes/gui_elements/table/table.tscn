@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://bh8p8tmx7koqt"]
+[gd_scene format=3 uid="uid://bh8p8tmx7koqt"]
 
 [ext_resource type="Script" uid="uid://d10aghcktyt34" path="res://scenes/gui_elements/table/table.gd" id="1_j3e21"]
 

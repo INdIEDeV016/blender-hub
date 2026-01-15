@@ -73,8 +73,18 @@ func _download_and_install(source: String, installation_path: String) -> Error:
 	var download_card: DownloadCard = DOWNLOAD_CARD_SCENE.instantiate()
 	download_card.status_update.connect(_on_download_card_status_update)
 	download_container.add_child(download_card)
+
+	%KillBlenderDialog.dialog_text = ""
+
 	if Helper.is_valid_url(source):
 		var data: Dictionary = await download_card.download(source)
+
+		#match Settings.get_setting("Downloads", "kill_blender", {"text" = "Ask"}).text:
+			#"Don't Install and Wait":
+				#pass
+			#"Ask", _:
+				#%KillBlenderDialog
+
 		if data.has("file") and not data.file.is_empty():
 			return await download_card.install(data.file, installation_path)
 		return data.error

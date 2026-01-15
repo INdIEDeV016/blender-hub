@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dbc81lof6ohpj"]
+[gd_scene format=3 uid="uid://dbc81lof6ohpj"]
 
 [ext_resource type="Shader" uid="uid://bhk4goh156by" path="res://assets/blur_vs.tres" id="1_00alm"]
 [ext_resource type="Script" uid="uid://crd2ds31fc2e2" path="res://scenes/side_bar.gd" id="1_nc4e0"]
@@ -26,7 +26,7 @@ border_color = Color(0.12941177, 0.14901961, 0.1764706, 1)
 corner_radius_top_left = 12
 corner_radius_bottom_left = 12
 
-[node name="SideBar3" type="Control" unique_id=8363792]
+[node name="SideBar" type="Control" unique_id=8363792]
 layout_mode = 3
 anchors_preset = 11
 anchor_left = 1.0
@@ -107,7 +107,12 @@ icon_alignment = 1
 [node name="KillBlenderDialog" type="ConfirmationDialog" parent="." unique_id=954904300]
 unique_name_in_owner = true
 oversampling_override = 1.0
+position = Vector2i(370, 245)
+size = Vector2i(400, 147)
 ok_button_text = "Yes"
+dialog_text = "Close all running Blenders to install the new versions?
+
+WARNING: Unsaved Work will be lost!"
 dialog_autowrap = true
 cancel_button_text = "No"
 

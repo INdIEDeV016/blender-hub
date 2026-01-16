@@ -26,7 +26,7 @@ func check_running_blenders() -> Dictionary[int, BlenderData]:
 		#print_debug(executable_path_size, " + ", process_id_length, " = ", total_length)
 		output.remove_at(0)
 		for line in output:
-			blenders[line.substr(executable_path_size, process_id_length).to_int()] = query_blender_data(line.substr(0, executable_path_size))
+			blenders[line.substr(executable_path_size, process_id_length).to_int()] = await  query_blender_data(line.substr(0, executable_path_size))
 			#print_debug([line.substr(0, executable_path_size), line.substr(executable_path_size, process_id_length).to_int()])
 
 	return blenders
@@ -35,11 +35,11 @@ func check_running_blenders() -> Dictionary[int, BlenderData]:
 func query_blender_data(blender_exec_file: String) -> BlenderData:
 	var blender: = BlenderData.new()
 
-	var output = []
-	OS.execute(blender_exec_file.replace("/", "\\"), ["-v"], output)
-	output = output[0]
+	var async: = Async.new()
+	add_child(async)
+	var lines: = await async.execute("\"" + blender_exec_file.replace("/", "\\") + "\"" + " -v")
+	async.queue_free()
 
-	var lines: = (output as String).remove_chars("\t").split("\r\n")
 	var version: = Array(lines[0].split(" ", false))
 	version.remove_at(0)
 	blender.version = version.pop_front()
@@ -47,6 +47,7 @@ func query_blender_data(blender_exec_file: String) -> BlenderData:
 
 	var build_data: = {}
 	for line in lines:
+		line = line.strip_edges()
 		if line.begins_with("build"):
 			build_data[line.get_slice(": ", 0).to_snake_case()] = line.get_slice(": ", 1)
 	#print_debug(JSON.stringify(build_data, "\t", false))
@@ -69,7 +70,7 @@ func get_installed_blenders() -> Array[BlenderData]:
 	if DirAccess.get_open_error() == OK:
 		for folder in d.get_directories():
 			if Helper.is_following_pattern(r"Blender \d\.(\d|x)", folder) and FileAccess.file_exists(install_folder.path_join(folder).path_join("blender.exe")):
-				blenders.append(query_blender_data(install_folder.path_join(folder).path_join("blender.exe").replace("/", "\\")))
+				blenders.append(await query_blender_data(install_folder.path_join(folder).path_join("blender.exe").replace("/", "\\")))
 	else:
 		push_warning("Directory doesn't exists yet. -> ", install_folder)
 	return blenders

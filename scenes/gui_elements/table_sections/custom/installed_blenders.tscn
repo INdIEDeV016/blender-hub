@@ -28,7 +28,7 @@ size = Vector2i(228, 74)
 offset_left = 10.0
 offset_top = 10.0
 offset_right = 218.0
-offset_bottom = 90.0
+offset_bottom = 74.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/ActionButtonContainer/Add/PopupPanel/VBoxContainer" index="0" unique_id=1246467709]
 layout_mode = 2

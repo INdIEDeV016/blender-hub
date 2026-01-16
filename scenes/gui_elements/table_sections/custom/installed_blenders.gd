@@ -3,7 +3,7 @@ extends TableSection
 
 func refresh() -> void:
 	await super()
-	for data in Blender.get_installed_blenders():
+	for data in await Blender.get_installed_blenders():
 		var row: = table.add_row(data)
 		row.set_open_mode()
 		if row.has_user_signal("open"):

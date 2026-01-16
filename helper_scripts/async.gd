@@ -9,6 +9,7 @@ var _process: = {}
 
 
 func execute(command: String) -> PackedStringArray:
+	#print_debug(command)
 	_process = OS.execute_with_pipe("cmd.exe", ["/C", command])
 	_thread.start(_loop)
 	await completed

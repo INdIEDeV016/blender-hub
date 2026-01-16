@@ -13,13 +13,6 @@
 [ext_resource type="Texture2D" uid="uid://dydfcjlabju2" path="res://assets/icons/blender.svg" id="8_ya4ey"]
 [ext_resource type="PackedScene" uid="uid://lmxefmhu0o4" path="res://scenes/gui_elements/notification_toast.tscn" id="10_4c57u"]
 
-[sub_resource type="StyleBoxLine" id="StyleBoxLine_eb6dy"]
-color = Color(0.12941177, 0.14901961, 0.1764706, 1)
-grow_begin = -300.0
-grow_end = -300.0
-thickness = 5
-vertical = true
-
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h2yge"]
 content_margin_left = 10.0
 content_margin_top = 20.0
@@ -73,7 +66,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 0
-theme_override_styles/split_bar_background = SubResource("StyleBoxLine_eb6dy")
+theme_override_constants/autohide = 0
 split_offsets = PackedInt32Array(95)
 split_offset = 95
 
